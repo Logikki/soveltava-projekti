@@ -19,8 +19,9 @@ public class Aloitusnaytto implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == UusiKayttaja) {
-            //Suoritetaan rekisteröitymisvaihe
+		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
+            
+
         }
         else if (e.getSource() == VanhaKayttaja) {
             //Suoritetaan kirjautuminen
