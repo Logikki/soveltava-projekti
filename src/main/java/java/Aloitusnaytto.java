@@ -1,5 +1,6 @@
 import javax.swing.*;  
 import java.awt.event.*;  
+import projekti;
 
 public class Aloitusnaytto implements ActionListener {
     JButton UusiKayttaja, VanhaKayttaja;
@@ -20,7 +21,7 @@ public class Aloitusnaytto implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
-            ruutu.setVisible(false);
+            
 
         }
         else if (e.getSource() == VanhaKayttaja) {
