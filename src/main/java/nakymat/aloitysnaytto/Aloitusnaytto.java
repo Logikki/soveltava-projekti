@@ -21,7 +21,10 @@ import java.awt.event.*;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
+            
+            new AsetaKayttajatiedot();
         }
+        
         else if (e.getSource() == VanhaKayttaja) {
 
             //Suoritetaan kirjautuminen
