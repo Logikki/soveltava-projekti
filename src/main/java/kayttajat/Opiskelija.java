@@ -1,3 +1,4 @@
+package kayttajat;
 import java.util.HashMap;
 
 class Opiskelija {

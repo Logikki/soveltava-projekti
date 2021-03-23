@@ -1,3 +1,4 @@
+package kayttajat;
 class Opettaja{
     
 }
