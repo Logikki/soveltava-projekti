@@ -19,6 +19,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
         opettajaRB = new JRadioButton("Opettaja");
         opiskelijaRB.setBounds(100,120,100,30);    
         opettajaRB.setBounds(100,140,100,30);
+        opiskelijaRB.setEnabled(true);
         ButtonGroup bg=new ButtonGroup();
         bg.add(opettajaRB); bg.add(opiskelijaRB);
         valmis = new JButton("Valmis");
@@ -31,14 +32,19 @@ public class AsetaKayttajaTiedot implements ActionListener {
         ruutu.add(opiskelijaRB); ruutu.add(opettajaRB); ruutu.add(valmis); 
         ruutu.add(salasanaKentta); ruutu.add(Nimi);
         if (OnkoUusiKayttaja) {
-            if (opiskelijaRB.isSelected()) { }
-            tietoKentta = new JTextField("OpiskelijaNumero");
+            tietoKentta = new JTextField("Opiskelija numero");
             tietoKentta.setBounds(100,90,200,40);
             salasanaKentta.setBounds(100,130,200,40);   
             ruutu.add(tietoKentta);
             opiskelijaRB.setBounds(100,160,100,30);    
             opettajaRB.setBounds(100,180,100,30);
-            Nimi.setBounds(100, 160, 200, 40);
+            valmis.setBounds(220,160,80,30);
+            if (opettajaRB.isSelected()) {
+                tietoKentta.setText("Sähköposti");
+            }
+            else {
+                tietoKentta.setText("Opiskelija numero");
+            }
         }
     }
 

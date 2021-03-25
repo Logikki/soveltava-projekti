@@ -1,8 +1,12 @@
 package kayttajat.opiskelija;
 import java.util.HashMap;
 
-public class Opiskelija {
-    protected String nimi;
+public class Opiskelija implements java.io.Serializable {
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 7481355780935856129L;
+	protected String nimi;
     protected String opNumero;
     protected String salasana;
     protected HashMap<String, Integer> kurssiSuoritukset;

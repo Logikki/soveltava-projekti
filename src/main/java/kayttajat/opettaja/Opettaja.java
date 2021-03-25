@@ -1,6 +1,11 @@
-package kayttajat;
-class Opettaja{
-    protected String nimi;
+package kayttajat.opettaja;
+
+public class Opettaja implements java.io.Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -4382066002919299671L;
+	protected String nimi;
     protected String salasana;
     protected String sposti;
 
