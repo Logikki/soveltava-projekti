@@ -1,8 +1,8 @@
 package kayttajat;
 class Opettaja{
-    private String nimi;
-    private String salasana;
-    private String sposti;
+    protected String nimi;
+    protected String salasana;
+    protected String sposti;
 
     public Opettaja(String nimi, String salasana, String sposti) {
         this.nimi = nimi;
