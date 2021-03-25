@@ -1,13 +1,14 @@
 package nakymat.aloitysnaytto;
-import nakymat.*;
+import nakymat.asetakayttajatiedot.AsetaKayttajaTiedot;
 import javax.swing.*;  
 import java.awt.event.*;  
 
  public class Aloitusnaytto implements ActionListener {
     JButton UusiKayttaja, VanhaKayttaja;
+    JFrame ruutu;
 
     public Aloitusnaytto() {
-        JFrame ruutu= new JFrame();
+        ruutu= new JFrame();
         UusiKayttaja = new JButton("Uusi käyttajä");
         VanhaKayttaja = new JButton("Vanha käyttäjä");
         UusiKayttaja.setBounds(50,50,200,50);
@@ -17,18 +18,20 @@ import java.awt.event.*;
         ruutu.setSize(300,300);  
         ruutu.setLayout(null);  
         ruutu.setVisible(true);  
+        UusiKayttaja.addActionListener(this);
+        VanhaKayttaja.addActionListener(this);
         }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
-            new AsetaKayttajatiedot();
-
+            ruutu.setVisible(false);
+            new AsetaKayttajaTiedot(true);
         }
         
-        else if (e.getSource() == VanhaKayttaja) {
-
-            //Suoritetaan kirjautuminen
+        else { //kirjaudutaan sisään
+            ruutu.setVisible(false);
+            new AsetaKayttajaTiedot();
         }
 	}
     
