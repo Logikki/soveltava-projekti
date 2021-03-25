@@ -1,12 +1,13 @@
 package nakymat.asetakayttajatiedot;
 import javax.swing.*;
 import java.awt.event.*;    
-
+import kayttajat.opiskelija.Opiskelija;
+import kayttajat.opettaja.Opettaja;
 
 public class AsetaKayttajaTiedot implements ActionListener {
     JButton valmis;
     JRadioButton opettajaRB,opiskelijaRB;
-    JTextField Nimi, OpNumero;
+    JTextField Nimi, tietoKentta;
     JPasswordField salasanaKentta;
     JFrame ruutu;
     
@@ -21,7 +22,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
         ButtonGroup bg=new ButtonGroup();
         bg.add(opettajaRB); bg.add(opiskelijaRB);
         valmis = new JButton("Valmis");
-        valmis.setBounds(220,180,80,30);
+        valmis.setBounds(220,120,80,30);
         valmis.addActionListener(this);   
         Nimi = new JTextField("nimi");
         Nimi.setBounds(100, 50, 200, 40);
@@ -30,20 +31,25 @@ public class AsetaKayttajaTiedot implements ActionListener {
         ruutu.add(opiskelijaRB); ruutu.add(opettajaRB); ruutu.add(valmis); 
         ruutu.add(salasanaKentta); ruutu.add(Nimi);
         if (OnkoUusiKayttaja) {
-
-            OpNumero = new JTextField("OpiskelijaNumero");
-            OpNumero.setBounds(100,90,200,40);
+            if (opiskelijaRB.isSelected()) { }
+            tietoKentta = new JTextField("OpiskelijaNumero");
+            tietoKentta.setBounds(100,90,200,40);
             salasanaKentta.setBounds(100,130,200,40);   
-            ruutu.add(OpNumero);
+            ruutu.add(tietoKentta);
             opiskelijaRB.setBounds(100,160,100,30);    
             opettajaRB.setBounds(100,180,100,30);
+            Nimi.setBounds(100, 160, 200, 40);
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e){  
+        String salasana = new String(this.salasanaKentta.getPassword());
         if (opiskelijaRB.isSelected()) {
-            
+            new Opiskelija(this.Nimi.getText(), this.tietoKentta.getText(), salasana);
+        }
+        else {
+            new Opettaja(this.Nimi.getText(), salasana, this.tietoKentta.getText());
         }
     }
 }
