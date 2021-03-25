@@ -1,4 +1,4 @@
-package nakymat;
+package nakymat.asetakayttajatiedot;
 import javax.swing.*;
 import java.awt.*;  
 import java.awt.event.ActionEvent;
@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import kayttajat.*;
 
-class AsetaKayttajatiedot implements ActionListerner {
+public class AsetaKayttajatiedot implements ActionListerner {
     JButton valmis;
     JRadioButton opettajaRB,opiskelijaRB;
     JTextField Nimi;

@@ -1,4 +1,5 @@
-package nakymat;
+package nakymat.aloitysnaytto;
+import nakymat.*;
 import javax.swing.*;  
 import java.awt.event.*;  
 
@@ -21,8 +22,8 @@ import java.awt.event.*;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
-            
             new AsetaKayttajatiedot();
+
         }
         
         else if (e.getSource() == VanhaKayttaja) {
