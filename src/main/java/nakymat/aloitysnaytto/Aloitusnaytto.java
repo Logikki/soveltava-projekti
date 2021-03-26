@@ -1,8 +1,8 @@
+package nakymat;
 import javax.swing.*;  
 import java.awt.event.*;  
-import projekti;
 
-public class Aloitusnaytto implements ActionListener {
+ public class Aloitusnaytto implements ActionListener {
     JButton UusiKayttaja, VanhaKayttaja;
 
     public Aloitusnaytto() {
@@ -22,9 +22,11 @@ public class Aloitusnaytto implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
             
-
+            new AsetaKayttajatiedot();
         }
+        
         else if (e.getSource() == VanhaKayttaja) {
+
             //Suoritetaan kirjautuminen
         }
 	}
