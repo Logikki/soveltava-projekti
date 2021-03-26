@@ -1,6 +1,7 @@
 package kayttajat.opettaja;
+import kayttajat.henkilo.Henkilo;
 
-public class Opettaja implements java.io.Serializable {
+public class Opettaja extends Henkilo implements java.io.Serializable {
 	/**
 	 *
 	 */
