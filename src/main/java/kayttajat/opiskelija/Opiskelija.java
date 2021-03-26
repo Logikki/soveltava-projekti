@@ -10,8 +10,8 @@ public class Opiskelija extends Henkilo {
 	protected String opNumero;
     protected HashMap<String, Integer> kurssiSuoritukset;
 
-    public Opiskelija(String nimi, String opNumero, String salasana) {
-		super(nimi, salasana);
+    public Opiskelija(String nimi, String salasana, String opNumero, String sposti) {
+		super(nimi, salasana, sposti);
 		this.opNumero = opNumero;
 		kurssiSuoritukset = new HashMap<>();
 	}

@@ -1,7 +1,6 @@
-/Users/ronikoskinen/environments/testi/src/main/java/MainSuoritus.java
-/Users/ronikoskinen/environments/testi/src/main/java/Aloitusnaytto.java
-/Users/ronikoskinen/environments/testi/src/main/java/Opiskelija.java
-/Users/ronikoskinen/environments/testi/src/main/java/Opettaja.java
-/Users/ronikoskinen/environments/testi/src/main/java/Test.java
-/Users/ronikoskinen/environments/testi/src/main/java/AsetaKayttajaTiedot.java
-/Users/ronikoskinen/environments/testi/src/main/java/Kirjautuminen.java
+/Users/ronikoskinen/environments/projekti/src/main/java/kayttajat/opettaja/Opettaja.java
+/Users/ronikoskinen/environments/projekti/src/main/java/kayttajat/opiskelija/Opiskelija.java
+/Users/ronikoskinen/environments/projekti/src/main/java/kayttajat/henkilo/Henkilo.java
+/Users/ronikoskinen/environments/projekti/src/main/java/nakymat/aloitysnaytto/Aloitusnaytto.java
+/Users/ronikoskinen/environments/projekti/src/main/java/nakymat/asetakayttajatiedot/AsetaKayttajaTiedot.java
+/Users/ronikoskinen/environments/projekti/src/main/java/MainSuoritus.java

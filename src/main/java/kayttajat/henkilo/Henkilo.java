@@ -3,9 +3,11 @@ package kayttajat.henkilo;
 public class Henkilo implements java.io.Serializable {
     protected String nimi;
     protected String salasana;
-	public Henkilo(String nimi, String salasana) {
+	protected String sposti;
+	public Henkilo(String nimi, String salasana, String sposti) {
 		this.nimi = nimi;
 		this.salasana = salasana;
+		this.sposti = sposti;
 	}
 	public String getNimi() {
 		return nimi;
