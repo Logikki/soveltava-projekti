@@ -3,6 +3,9 @@ import javax.swing.*;
 import java.awt.event.*;    
 import kayttajat.opiskelija.Opiskelija;
 import kayttajat.opettaja.Opettaja;
+// import kayttajat.henkilo.Henkilo;
+// import java.io.*;
+// import java.util.ArrayList;
 
 public class AsetaKayttajaTiedot implements ActionListener {
     JButton valmis;
@@ -53,9 +56,25 @@ public class AsetaKayttajaTiedot implements ActionListener {
         String salasana = new String(this.salasanaKentta.getPassword());
         if (opiskelijaRB.isSelected()) {
             new Opiskelija(this.Nimi.getText(), this.tietoKentta.getText(), salasana);
+
         }
         else {
             new Opettaja(this.Nimi.getText(), salasana, this.tietoKentta.getText());
         }
     }
-}
+    //keskeneräistä ei toimi
+//     public static void tallennaKayttaja(Henkilo henkilo) {
+//         ArrayList<Henkilo> kayttajat = new ArrayList<>();
+//         try {
+//             FileInputStream fis=new FileInputStream("resources/kayttajat.ser");
+//             ObjectInputStream ois=new ObjectInputStream(fis);
+//             ArrayList<WriteObject> woi=new ArrayList<>();
+//             woi=(ArrayList<WriteObject>)ois.readObject();
+    
+//             for(int i=0;i<woi.size();i++){
+//                 woi.get(i).getvalues();
+//             }
+//     }
+
+//         }
+    }
