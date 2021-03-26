@@ -31,7 +31,7 @@ import java.awt.event.*;
         
         else { //kirjaudutaan sisään
             ruutu.setVisible(false);
-            new AsetaKayttajaTiedot();
+            new AsetaKayttajaTiedot(false);
         }
 	}
     
