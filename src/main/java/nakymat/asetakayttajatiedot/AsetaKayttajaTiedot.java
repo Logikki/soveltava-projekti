@@ -55,15 +55,9 @@ public class AsetaKayttajaTiedot implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){  
-        if (e.getSource() == opettajaRB) { //tämä ei toimi
-            ruutu.remove(opNumero);
-        }
-        else if (e.getSource() == opiskelijaRB) {
-            ruutu.add(opNumero);
-        }
-        else if (e.getSource() == valmis) {
+        //if (e.getSource() == valmis) {
             String salasana = new String(this.salasanaKentta.getPassword());
-            if (OnkoUusiKayttaja) { //tallennetaan uusi käyttäjä
+            if (this.OnkoUusiKayttaja) { //tallennetaan uusi käyttäjä
                 if (opiskelijaRB.isSelected()) {
                    tallennaKayttaja(new Opiskelija(this.Nimi.getText(), salasana, opNumero.getText(), sposti.getText())); 
 
@@ -71,14 +65,15 @@ public class AsetaKayttajaTiedot implements ActionListener {
                 else {
                    tallennaKayttaja(new Opettaja(this.Nimi.getText(), salasana, this.sposti.getText()));
                 }
-            }
+            //}
         }
 }
 //Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
 //uusi käyttäjä tähän listaan ja tallennetaan tiedostoon
     public static void tallennaKayttaja(Henkilo henkilo) {
             try {
-               ArrayList<Henkilo> kayttajat = lataaKayttajat();
+                ArrayList<Henkilo> kayttajat = lataaKayttajat();
+                System.out.println(kayttajat.toString());
                 kayttajat.add(henkilo);
                 FileOutputStream WD = new FileOutputStream("kayttajat.ser");
                 ObjectOutputStream kirjoitaTiedostoon = new ObjectOutputStream(WD);
