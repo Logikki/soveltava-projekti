@@ -74,18 +74,37 @@ public class AsetaKayttajaTiedot implements ActionListener {
             }
         }
 }
+//Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
+//uusi käyttäjä tähän listaan ja tallennetaan tiedostoon
     public static void tallennaKayttaja(Henkilo henkilo) {
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("kayttajat.ser");
             try {
-                FileOutputStream fop = new FileOutputStream(is);
-                ObjectOutputStream oos=new ObjectOutputStream(fop);
-                oos.writeObject(henkilo);
-                oos.close();
-                System.out.println("tallennettu");
+               ArrayList<Henkilo> kayttajat = lataaKayttajat();
+                kayttajat.add(henkilo);
+                FileOutputStream WD = new FileOutputStream("kayttajat.ser");
+                ObjectOutputStream kirjoitaTiedostoon = new ObjectOutputStream(WD);
+                kirjoitaTiedostoon.writeObject(kayttajat);
+                kirjoitaTiedostoon.flush();
+                kirjoitaTiedostoon.close();
             } catch (Exception e) {
+                e.printStackTrace();
                 System.out.println("ei tallennettu");
         }
 
         }
+
+        @SuppressWarnings("unchecked")
+        public static ArrayList<Henkilo> lataaKayttajat() {
+            ArrayList<Henkilo> kayttajat = new ArrayList<>();
+            try {
+                FileInputStream readData = new FileInputStream("kayttajat.ser");
+                ObjectInputStream readStream = new ObjectInputStream(readData);
+                kayttajat = (ArrayList<Henkilo>) readStream.readObject();
+                readStream.close();
+                
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            return kayttajat;
     }
+}
