@@ -6,10 +6,8 @@ public class Opettaja extends Henkilo {
 	 *
 	 */
 	private static final long serialVersionUID = 2895440032784389096L;
-	protected String sposti;
 	public Opettaja(String nimi, String salasana, String sposti) {
-		super(nimi, salasana);
-		this.sposti = sposti;
+		super(nimi, salasana, sposti);
 	}
     
 	public String getSposti() {

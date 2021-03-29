@@ -3,18 +3,20 @@ import javax.swing.*;
 import java.awt.event.*;    
 import kayttajat.opiskelija.Opiskelija;
 import kayttajat.opettaja.Opettaja;
-// import kayttajat.henkilo.Henkilo;
-// import java.io.*;
-// import java.util.ArrayList;
+import kayttajat.henkilo.Henkilo;
+import java.io.*;
+import java.util.ArrayList;
 
 public class AsetaKayttajaTiedot implements ActionListener {
     JButton valmis;
     JRadioButton opettajaRB,opiskelijaRB;
-    JTextField Nimi, tietoKentta;
+    JTextField Nimi, sposti, opNumero;
     JPasswordField salasanaKentta;
     JFrame ruutu;
+    boolean OnkoUusiKayttaja;
     
     public AsetaKayttajaTiedot(boolean OnkoUusiKayttaja) {
+        this.OnkoUusiKayttaja = OnkoUusiKayttaja;
         ruutu= new JFrame();
         ruutu.setSize(400,400);
         ruutu.setVisible(true); ruutu.setLayout(null);
@@ -34,47 +36,56 @@ public class AsetaKayttajaTiedot implements ActionListener {
         salasanaKentta.setBounds(100,90,200,40);   
         ruutu.add(opiskelijaRB); ruutu.add(opettajaRB); ruutu.add(valmis); 
         ruutu.add(salasanaKentta); ruutu.add(Nimi);
+
         if (OnkoUusiKayttaja) {
-            tietoKentta = new JTextField("Opiskelija numero");
-            tietoKentta.setBounds(100,90,200,40);
+            opiskelijaRB.addActionListener(this);
+            opiskelijaRB.addActionListener(this);
+            opNumero = new JTextField("Opiskelijanumero");
+            opNumero.setBounds(100,10,200,40);
+            ruutu.add(opNumero);
+            sposti = new JTextField("Sähköposti");
+            sposti.setBounds(100,90,200,40);
             salasanaKentta.setBounds(100,130,200,40);   
-            ruutu.add(tietoKentta);
+            ruutu.add(sposti);
             opiskelijaRB.setBounds(100,160,100,30);    
             opettajaRB.setBounds(100,180,100,30);
             valmis.setBounds(220,160,80,30);
-            if (opettajaRB.isSelected()) {
-                tietoKentta.setText("Sähköposti");
-            }
-            else {
-                tietoKentta.setText("Opiskelija numero");
-            }
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e){  
-        String salasana = new String(this.salasanaKentta.getPassword());
-        if (opiskelijaRB.isSelected()) {
-            new Opiskelija(this.Nimi.getText(), this.tietoKentta.getText(), salasana);
+        if (e.getSource() == opettajaRB) { //tämä ei toimi
+            ruutu.remove(opNumero);
+        }
+        else if (e.getSource() == opiskelijaRB) {
+            ruutu.add(opNumero);
+        }
+        else if (e.getSource() == valmis) {
+            String salasana = new String(this.salasanaKentta.getPassword());
+            if (OnkoUusiKayttaja) { //tallennetaan uusi käyttäjä
+                if (opiskelijaRB.isSelected()) {
+                   tallennaKayttaja(new Opiskelija(this.Nimi.getText(), salasana, opNumero.getText(), sposti.getText())); 
+
+                }
+                else {
+                   tallennaKayttaja(new Opettaja(this.Nimi.getText(), salasana, this.sposti.getText()));
+                }
+            }
+        }
+}
+    public static void tallennaKayttaja(Henkilo henkilo) {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream is = classloader.getResourceAsStream("kayttajat.ser");
+            try {
+                FileOutputStream fop = new FileOutputStream(is);
+                ObjectOutputStream oos=new ObjectOutputStream(fop);
+                oos.writeObject(henkilo);
+                oos.close();
+                System.out.println("tallennettu");
+            } catch (Exception e) {
+                System.out.println("ei tallennettu");
+        }
 
         }
-        else {
-            new Opettaja(this.Nimi.getText(), salasana, this.tietoKentta.getText());
-        }
-    }
-    //keskeneräistä ei toimi
-//     public static void tallennaKayttaja(Henkilo henkilo) {
-//         ArrayList<Henkilo> kayttajat = new ArrayList<>();
-//         try {
-//             FileInputStream fis=new FileInputStream("resources/kayttajat.ser");
-//             ObjectInputStream ois=new ObjectInputStream(fis);
-//             ArrayList<WriteObject> woi=new ArrayList<>();
-//             woi=(ArrayList<WriteObject>)ois.readObject();
-    
-//             for(int i=0;i<woi.size();i++){
-//                 woi.get(i).getvalues();
-//             }
-//     }
-
-//         }
     }
