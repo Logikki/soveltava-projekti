@@ -24,11 +24,11 @@ import java.awt.event.*;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
             ruutu.setVisible(false);
             new AsetaKayttajaTiedot(true);
         }
-        
         else { //kirjaudutaan sisään
             ruutu.setVisible(false);
             new AsetaKayttajaTiedot(false);
