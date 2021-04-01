@@ -75,7 +75,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();
                 System.out.println(kayttajat.toString());
                 kayttajat.add(henkilo);
-                FileOutputStream WD = new FileOutputStream("src/main/java/kayttajat.ser");
+                FileOutputStream WD = new FileOutputStream("src/main/java/resources/kayttajat.ser");
                 ObjectOutputStream kirjoitaTiedostoon = new ObjectOutputStream(WD);
                 kirjoitaTiedostoon.writeObject(kayttajat);
                 kirjoitaTiedostoon.flush();
@@ -91,7 +91,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
         public static ArrayList<Henkilo> lataaKayttajat() {
             ArrayList<Henkilo> kayttajat = new ArrayList<>();
             try {
-                FileInputStream readData = new FileInputStream("src/main/java/kayttajat.ser");
+                FileInputStream readData = new FileInputStream("src/main/java/resources/kayttajat.ser");
                 ObjectInputStream readStream = new ObjectInputStream(readData);
                 kayttajat = (ArrayList<Henkilo>) readStream.readObject();
                 readStream.close();
