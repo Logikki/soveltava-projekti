@@ -70,8 +70,6 @@ public class AsetaKayttajaTiedot implements ActionListener {
             }
             else { //Katsotaan onko käyttäjäsahkoPostiKentta ja salasana oikein 
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();
-                System.out.println("ladataan");
-                System.out.println(kayttajat.toString());
                 for (Henkilo kayttaja : kayttajat) { //käydään läpi käyttäjät
                     if (kayttaja.getSposti().equals(sahkoPostiKentta.getText()) && kayttaja.getSalasana().equals(salasana)) {
                         Henkilo kirjautuva = kayttaja;
@@ -92,13 +90,13 @@ public class AsetaKayttajaTiedot implements ActionListener {
     public static void tallennaKayttaja(Henkilo henkilo) {
             try {
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();
-                System.out.println(kayttajat.toString());
                 kayttajat.add(henkilo);
                 FileOutputStream WD = new FileOutputStream("src/main/resources/kayttajat.ser");
                 ObjectOutputStream kirjoitaTiedostoon = new ObjectOutputStream(WD);
                 kirjoitaTiedostoon.writeObject(kayttajat);
                 kirjoitaTiedostoon.flush();
                 kirjoitaTiedostoon.close();
+                System.out.println("Tallennettu" + kayttajat.toString());
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("ei tallennettu");
