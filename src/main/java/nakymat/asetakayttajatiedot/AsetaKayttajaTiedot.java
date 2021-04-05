@@ -57,19 +57,21 @@ public class AsetaKayttajaTiedot implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){  
-        //if (e.getSource() == valmis) {
+        if (e.getSource() == valmis) {
             String salasana = new String(this.salasanaKentta.getPassword());
-            if (this.OnkoUusiKayttaja) { //tallennetaan uusi käyttäjä
+            if (this.OnkoUusiKayttaja) { //tallennetaan uusi käyttäjä tässä tapauksessa
                 if (opiskelijaRB.isSelected()) {
                    tallennaKayttaja(new Opiskelija(nimiKentta.getText(), salasana, opNumero.getText(), this.sahkoPostiKentta.getText())); 
 
                 }
                 else {
-                   tallennaKayttaja(new Opettaja(this.nimiKentta.getText(),, salasana, this.sahkoPostiKentta.getText()));
+                   tallennaKayttaja(new Opettaja(this.nimiKentta.getText(), salasana, this.sahkoPostiKentta.getText()));
                 }
             }
             else { //Katsotaan onko käyttäjäsahkoPostiKentta ja salasana oikein 
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();
+                System.out.println("ladataan");
+                System.out.println(kayttajat.toString());
                 for (Henkilo kayttaja : kayttajat) { //käydään läpi käyttäjät
                     if (kayttaja.getSposti().equals(sahkoPostiKentta.getText()) && kayttaja.getSalasana().equals(salasana)) {
                         Henkilo kirjautuva = kayttaja;
@@ -84,6 +86,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
                 }
             }
         }
+    }
 //Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
 //uusi käyttäjä tähän listaan ja tallennetaan tiedostoon
     public static void tallennaKayttaja(Henkilo henkilo) {
