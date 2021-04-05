@@ -22,6 +22,13 @@ public class Henkilo implements java.io.Serializable {
 	public void setSalasana(String salasana) {
 		this.salasana = salasana;
 	}
+	
+	public String getSposti() {
+		return sposti;
+	}
+	public void setSposti(String sposti) {
+		this.sposti = sposti;
+	}
 	@Override
 	public String toString() {
 		return "Henkilo [nimi=" + nimi + ", salasana=" + salasana + ", sposti=" + sposti + "]";
