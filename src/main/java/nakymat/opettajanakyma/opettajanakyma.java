@@ -1,12 +1,4 @@
 package nakymat.opettajanakyma;
-<<<<<<< HEAD
-
-public class Opettajanakyma {
-
-    public Opettajanakyma() {
-
-        System.out.println("opettajanakyma luotu");
-=======
 import javax.swing.*;
 import nakymat.asetakayttajatiedot.AsetaKayttajaTiedot;
 import java.awt.event.*; 
