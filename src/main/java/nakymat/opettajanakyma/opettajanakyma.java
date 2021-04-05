@@ -28,7 +28,5 @@ public class Opettajanakyma {
         ruutu.setSize(400,400);
         ruutu.setLayout(null);
         ruutu.setVisible(true);
-
->>>>>>> 227acc53238f0fc289b272bcf7b5cd5b530aaf9d
     }
 }
