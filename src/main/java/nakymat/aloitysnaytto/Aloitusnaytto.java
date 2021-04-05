@@ -34,5 +34,4 @@ import java.awt.event.*;
             new AsetaKayttajaTiedot(false);
         }
 	}
-    
 }
