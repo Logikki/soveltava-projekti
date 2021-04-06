@@ -6,6 +6,8 @@ import kayttajat.opettaja.Opettaja;
 import kayttajat.henkilo.Henkilo;
 import java.io.*;
 import java.util.ArrayList;
+
+import nakymat.aloitysnaytto.Aloitusnaytto;
 import nakymat.opettajanakyma.Opettajanakyma;
 import nakymat.oppilaanNakyma.oppilaanNakyma;
 
@@ -61,11 +63,13 @@ public class AsetaKayttajaTiedot implements ActionListener {
             String salasana = new String(this.salasanaKentta.getPassword());
             if (this.OnkoUusiKayttaja) { //tallennetaan uusi käyttäjä tässä tapauksessa
                 if (opiskelijaRB.isSelected()) {
-                   tallennaKayttaja(new Opiskelija(nimiKentta.getText(), salasana, opNumero.getText(), this.sahkoPostiKentta.getText())); 
+                   tallennaKayttaja(new Opiskelija(nimiKentta.getText(), salasana, opNumero.getText(), this.sahkoPostiKentta.getText()));
+                   new Aloitusnaytto();
 
                 }
                 else {
                    tallennaKayttaja(new Opettaja(this.nimiKentta.getText(), salasana, this.sahkoPostiKentta.getText()));
+                   new Aloitusnaytto();
                 }
             }
             else { //Katsotaan onko käyttäjäsahkoPostiKentta ja salasana oikein 
