@@ -7,7 +7,8 @@ import kayttajat.opiskelija.Opiskelija;
 import kayttajat.opettaja.Opettaja;
 import kayttajat.henkilo.Henkilo;
 
-public class Opettajanakyma implements ActionListener {
+
+public class Opettajanakyma {
     
     public Opettajanakyma() {
         JFrame ikkuna = new JFrame();
