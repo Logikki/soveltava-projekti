@@ -6,11 +6,9 @@ import kayttajat.opettaja.Opettaja;
 import kayttajat.henkilo.Henkilo;
 import java.io.*;
 import java.util.ArrayList;
-
 import nakymat.aloitysnaytto.Aloitusnaytto;
 import nakymat.opettajanakyma.Opettajanakyma;
 import nakymat.oppilaanNakyma.oppilaanNakyma;
-
 
 public class AsetaKayttajaTiedot implements ActionListener {
     JButton valmis;
@@ -75,7 +73,8 @@ public class AsetaKayttajaTiedot implements ActionListener {
             else { //Katsotaan onko käyttäjäsahkoPostiKentta ja salasana oikein 
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();
                 for (Henkilo kayttaja : kayttajat) { //käydään läpi käyttäjät
-                    if (kayttaja.getSposti().equals(sahkoPostiKentta.getText()) && kayttaja.getSalasana().equals(salasana)) {
+                    if (kayttaja.getSposti().equals(sahkoPostiKentta.getText()) 
+                    && kayttaja.getSalasana().equals(salasana)) {
                         Henkilo kirjautuva = kayttaja;
                         if (kirjautuva.getClass() == Opettaja.class) {
                             new Opettajanakyma();
