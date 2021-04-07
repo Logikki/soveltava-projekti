@@ -17,9 +17,9 @@ import java.awt.event.*;
         ruutu.add(UusiKayttaja);
         ruutu.setSize(300,300);  
         ruutu.setLayout(null);  
-        ruutu.setVisible(true);  
         UusiKayttaja.addActionListener(this);
         VanhaKayttaja.addActionListener(this);
+        ruutu.setVisible(true);  
         }
 
 	@Override
