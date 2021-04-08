@@ -43,7 +43,7 @@ public class Opettajanakyma {
             public void actionPerformed(ActionEvent e) {
                 String data = "";
                 if (lista.getSelectedIndex() != -1) {                       
-                    data = "Lisätään kurssisuoritus opiskelijalle:" + lista.getSelectedValue();   
+                    data = "Lisätään kurssisuoritus opiskelijalle " + lista.getSelectedValue();   
                     label.setText(data);
 
                     for (Henkilo hlo : oppilaatlist) {
