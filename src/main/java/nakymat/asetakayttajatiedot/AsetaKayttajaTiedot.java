@@ -112,7 +112,6 @@ public class AsetaKayttajaTiedot implements ActionListener {
                 e.printStackTrace();
                 System.out.println("ei tallennettu");
         }
-
         }
         //Tämä lataa tiedostosta käyttäjät listan ja palauttaa sen
         @SuppressWarnings("unchecked")

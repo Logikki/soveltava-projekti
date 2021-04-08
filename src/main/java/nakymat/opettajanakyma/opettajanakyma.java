@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import kayttajat.opiskelija.Opiskelija;
 import kayttajat.opettaja.Opettaja;
 import kayttajat.henkilo.Henkilo;
-
+import java.io.*;
 
 public class Opettajanakyma {
     
@@ -20,8 +20,7 @@ public class Opettajanakyma {
 
         final DefaultListModel<String> oppilaat = new DefaultListModel<>();
         ArrayList<Henkilo> oppilaatlist = new ArrayList<>();
-        ArrayList<Henkilo> henkilot = new ArrayList<>();
-        henkilot = AsetaKayttajaTiedot.lataaKayttajat();
+        ArrayList<Henkilo> henkilot = new ArrayList<>(AsetaKayttajaTiedot.lataaKayttajat());
         
         for (Henkilo henkilo : henkilot) {
             if (henkilo.getClass() == Opiskelija.class) {
@@ -47,17 +46,17 @@ public class Opettajanakyma {
                     data = "Lisätään kurssisuoritus opiskelijalle:" + lista.getSelectedValue();   
                     label.setText(data);
 
-                    for (Henkilo hlo : oppilaatlist) {
+                    for (Henkilo hlo : henkilot) {
                         if (hlo.getNimi().equals(lista.getSelectedValue())) {
                             Opiskelija o = (Opiskelija) hlo;
-
+                            henkilot.remove(hlo);
                             JFrame ik;
                             ik = new JFrame();
                             String knimi = JOptionPane.showInputDialog(ik,"Anna kurssin nimi");
                             String asana = JOptionPane.showInputDialog(ik,"Anna oppilaan arvosana");
-
                             o.lisaaKurssiSuoritus(knimi, asana);
-
+                            henkilot.add(o);
+                            yliKirjoitaTiedosto(henkilot);
                             System.out.println("Kurssisuoritus lisätty opiskelijalle!");
                             }
                         }
@@ -65,5 +64,19 @@ public class Opettajanakyma {
                 }
             }  
         });
+    }
+    public static void yliKirjoitaTiedosto(ArrayList<Henkilo> kayttajat) {
+        try {
+            FileOutputStream WD = new FileOutputStream("src/main/resources/kayttajat.ser");
+            ObjectOutputStream kirjoitaTiedostoon = new ObjectOutputStream(WD);
+            kirjoitaTiedostoon.writeObject(kayttajat);
+            kirjoitaTiedostoon.flush();
+            kirjoitaTiedostoon.close();
+            System.out.println("Tallennettu" + kayttajat.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ei tallennettu");
+    }
+
     }
 }
