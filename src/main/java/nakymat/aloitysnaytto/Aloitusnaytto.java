@@ -9,6 +9,7 @@ import java.awt.event.*;
 
     public Aloitusnaytto() {
         ruutu= new JFrame();
+        ruutu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         UusiKayttaja = new JButton("Uusi käyttajä");
         VanhaKayttaja = new JButton("Vanha käyttäjä");
         UusiKayttaja.setBounds(50,50,200,50);
@@ -26,11 +27,11 @@ import java.awt.event.*;
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe
-            ruutu.setVisible(false);
+            ruutu.dispose();
             new AsetaKayttajaTiedot(true);
         }
         else { //kirjaudutaan sisään
-            ruutu.setVisible(false);
+            ruutu.dispose();
             new AsetaKayttajaTiedot(false);
         }
 	}

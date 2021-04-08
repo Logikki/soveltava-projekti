@@ -64,15 +64,18 @@ public class AsetaKayttajaTiedot implements ActionListener {
         if (e.getSource() == valmis) {
             String salasana = new String(this.salasanaKentta.getPassword());
             if (this.OnkoUusiKayttaja) { //tallennetaan uusi käyttäjä tässä tapauksessa
-                if (opiskelijaRB.isSelected()) {
+                if (opiskelijaRB.isSelected()) { //Luodaan uusi opiskelija käyttäjä
                    tallennaKayttaja(new Opiskelija(nimiKentta.getText(), salasana, opNumero.getText(), this.sahkoPostiKentta.getText()));
                    new Aloitusnaytto();
 
                 }
-                else {
+                else { //luodaan uusi opettaja käyttäjä
                    tallennaKayttaja(new Opettaja(this.nimiKentta.getText(), salasana, this.sahkoPostiKentta.getText()));
                    new Aloitusnaytto();
                 }
+                ruutu.dispose(); 
+                JFrame f = new JFrame();  
+                JOptionPane.showMessageDialog(f,"Käyttäjä luotu!");  
             }
             else { //Katsotaan onko käyttäjäsahkoPostiKentta ja salasana oikein 
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();

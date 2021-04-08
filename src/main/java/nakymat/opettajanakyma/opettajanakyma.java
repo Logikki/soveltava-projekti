@@ -12,6 +12,7 @@ public class Opettajanakyma {
     
     public Opettajanakyma() {
         JFrame ikkuna = new JFrame();
+        ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         final JLabel label = new JLabel();
         label.setSize(500,100);
         JButton b=new JButton("Lisää kurssisuoritus");  
