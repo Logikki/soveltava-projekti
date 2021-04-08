@@ -12,6 +12,7 @@ public class Opettajanakyma {
     
     public Opettajanakyma() {
         JFrame ikkuna = new JFrame();
+        ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         final JLabel label = new JLabel();
         label.setSize(500,100);
         JButton b=new JButton("Lisää kurssisuoritus");  
@@ -54,9 +55,8 @@ public class Opettajanakyma {
                             ik = new JFrame();
                             String knimi = JOptionPane.showInputDialog(ik,"Anna kurssin nimi");
                             String asana = JOptionPane.showInputDialog(ik,"Anna oppilaan arvosana");
-                            int arsana = Integer.parseInt(asana);
 
-                            o.lisaaKurssiSuoritus(knimi, arsana);
+                            o.lisaaKurssiSuoritus(knimi, asana);
 
                             System.out.println("Kurssisuoritus lisätty opiskelijalle!");
                             }

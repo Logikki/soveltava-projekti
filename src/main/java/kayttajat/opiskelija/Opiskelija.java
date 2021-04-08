@@ -8,7 +8,7 @@ public class Opiskelija extends Henkilo {
 	 */
 	private static final long serialVersionUID = 4329592575951960482L;
 	protected String opNumero;
-    protected HashMap<String, Integer> kurssiSuoritukset;
+    protected HashMap<String, String> kurssiSuoritukset;
 
     public Opiskelija(String nimi, String salasana, String opNumero, String sposti) {
 		super(nimi, salasana, sposti);
@@ -21,10 +21,10 @@ public class Opiskelija extends Henkilo {
 	public void setOpNumero(String opNumero) {
 		this.opNumero = opNumero;
 	}
-	public HashMap<String, Integer> getKurssiSuoritukset() {
+	public HashMap<String, String> getKurssiSuoritukset() {
 		return kurssiSuoritukset;
 	}
-	public void lisaaKurssiSuoritus(String kurssi, Integer arvosana) {
+	public void lisaaKurssiSuoritus(String kurssi, String arvosana) {
 		this.kurssiSuoritukset.put(kurssi, arvosana);
 	}
 }

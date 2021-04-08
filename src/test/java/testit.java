@@ -13,6 +13,11 @@ class  testit {
 
     @Test
 
-    void tallennusTest() {
+    void HenkiloTest() {
+        Henkilo matti = new Henkilo("matti", "salasana", "matti@luukku.fi");
+        assertTrue(matti.getSposti().equals("matti@luukku.fi"));
+        assertTrue(matti.getSalasana().equals("salasana"));
+        assertTrue(matti.getNimi().equals("matti"));
+
     }
 }
