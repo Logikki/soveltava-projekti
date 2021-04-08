@@ -27,4 +27,8 @@ public class Opiskelija extends Henkilo {
 	public void lisaaKurssiSuoritus(String kurssi, String arvosana) {
 		this.kurssiSuoritukset.put(kurssi, arvosana);
 	}
+	@Override
+	public String toString() {
+		return "Opiskelija [kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";
+	}
 }
