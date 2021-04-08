@@ -33,7 +33,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
         sahkoPostiKentta.setBounds(100, 50, 200, 40);
 
         JLabel salasanaLabel = new JLabel("Salasana:");
-        salasanaLabel.setBounds(23, 130, 200, 40);
+        salasanaLabel.setBounds(23, 90, 200, 40);
         ruutu.add(salasanaLabel);
         salasanaKentta = new JPasswordField();    
         salasanaKentta.setBounds(100,90,200,40);   
