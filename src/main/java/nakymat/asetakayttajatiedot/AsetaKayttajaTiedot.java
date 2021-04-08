@@ -23,12 +23,21 @@ public class AsetaKayttajaTiedot implements ActionListener {
         ruutu= new JFrame();
         ruutu.setLayout(null);
         valmis = new JButton("Valmis");
-        valmis.setBounds(220,130,80,30);
-        valmis.addActionListener(this);   
-        sahkoPostiKentta = new JTextField("Sähköposti");
+        valmis.setBounds(220,180,80,30);
+        valmis.addActionListener(this);
+
+        JLabel spostiLabel = new JLabel("Sähköposti:");
+        spostiLabel.setBounds(10, 50, 200, 40);
+        ruutu.add(spostiLabel);
+        sahkoPostiKentta = new JTextField("");
         sahkoPostiKentta.setBounds(100, 50, 200, 40);
+
+        JLabel salasanaLabel = new JLabel("Salasana:");
+        salasanaLabel.setBounds(23, 130, 200, 40);
+        ruutu.add(salasanaLabel);
         salasanaKentta = new JPasswordField();    
         salasanaKentta.setBounds(100,90,200,40);   
+
         ruutu.add(valmis); 
         ruutu.add(salasanaKentta); ruutu.add(sahkoPostiKentta);
         vaaraTunnus = new JLabel();
@@ -42,16 +51,25 @@ public class AsetaKayttajaTiedot implements ActionListener {
             bg.add(opettajaRB); bg.add(opiskelijaRB);
             opiskelijaRB.addActionListener(this);
             opiskelijaRB.addActionListener(this);
-            opNumero = new JTextField("Opiskelijanumero");
+
+            JLabel opNumeroLabel = new JLabel("Op.numero:");
+            opNumeroLabel.setBounds(10, 10, 200, 40);
+            ruutu.add(opNumeroLabel);
+            opNumero = new JTextField("");
             opNumero.setBounds(100,10,200,40);
             ruutu.add(opNumero);
-            nimiKentta = new JTextField("Nimi");
+
+            JLabel nimiKenttäLabel = new JLabel("Nimi:");
+            nimiKenttäLabel.setBounds(48, 90, 200, 40);
+            ruutu.add(nimiKenttäLabel);
+            nimiKentta = new JTextField("");
             nimiKentta.setBounds(100,90,200,40);
-            salasanaKentta.setBounds(100,130,200,40);   
             ruutu.add(nimiKentta);
-            opiskelijaRB.setBounds(100,160,100,30);    
-            opettajaRB.setBounds(100,180,100,30);
-            valmis.setBounds(220,160,80,30);
+
+            salasanaKentta.setBounds(100,130,200,40);
+            opiskelijaRB.setBounds(100,180,100,30);    
+            opettajaRB.setBounds(100,210,100,30);
+            valmis.setBounds(220,180,80,30);
             ruutu.add(opiskelijaRB); ruutu.add(opettajaRB);
             opiskelijaRB.setEnabled(true);
         }
