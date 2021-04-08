@@ -50,7 +50,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
             ButtonGroup bg=new ButtonGroup();
             bg.add(opettajaRB); bg.add(opiskelijaRB);
             opiskelijaRB.addActionListener(this);
-            opiskelijaRB.addActionListener(this);
+            opettajaRB.addActionListener(this);
 
             JLabel opNumeroLabel = new JLabel("Op.numero:");
             opNumeroLabel.setBounds(10, 10, 200, 40);
@@ -108,6 +108,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
                             Opiskelija kayttajaOpiskelija = (Opiskelija)kayttaja;
                             new oppilaanNakyma(kayttajaOpiskelija);
                         }
+                        ruutu.dispose(); return;
                     }
                 }
                 vaaraTunnus.setText("Sähköposti ja salasana ei täsmää");

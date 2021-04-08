@@ -38,11 +38,13 @@ public class oppilaanNakyma implements ActionListener {
 		DefaultListModel<String> suoritukset = new DefaultListModel<>();  
 		HashMap<String,String> kurssit = kayttaja.getKurssiSuoritukset();	
 		suoritukset.addElement("Arvosana" + "     " + "Kurssin nimi" );
-		for (String kurssi : kurssit.keySet()) {
-			suoritukset.addElement(kurssit.get(kurssi) + "                " + kurssi );
-			keskiarvo += Integer.parseInt(kurssit.get(kurssi)); 
+		if (kurssit.size() != 0) {
+			for (String kurssi : kurssit.keySet()) {
+				suoritukset.addElement(kurssit.get(kurssi) + "                " + kurssi );
+				keskiarvo += Integer.parseInt(kurssit.get(kurssi)); 
+			}
+			keskiarvo = keskiarvo/kurssit.size();
 		}
-		keskiarvo = keskiarvo/kurssit.size();
 		JList<String> list = new JList<>(suoritukset);
 		list.setBounds(100,50, 200,200); 
 		ka.setText("Keskiarvo: " + keskiarvo);
@@ -62,7 +64,6 @@ public class oppilaanNakyma implements ActionListener {
 			ruutu.dispose();
 			new Aloitusnaytto();
 		}
-		
 	}
 	}
     

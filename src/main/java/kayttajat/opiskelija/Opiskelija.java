@@ -29,6 +29,6 @@ public class Opiskelija extends Henkilo {
 	}
 	@Override
 	public String toString() {
-		return "Opiskelija [kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";
+		return super.toString() + "[kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";
 	}
 }
