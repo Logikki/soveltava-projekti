@@ -62,7 +62,6 @@ public class oppilaanNakyma implements ActionListener {
 			ruutu.dispose();
 			new Aloitusnaytto();
 		}
-		
 	}
 	}
     

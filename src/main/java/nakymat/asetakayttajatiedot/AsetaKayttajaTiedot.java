@@ -108,6 +108,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
                             Opiskelija kayttajaOpiskelija = (Opiskelija)kayttaja;
                             new oppilaanNakyma(kayttajaOpiskelija);
                         }
+                        ruutu.dispose(); return;
                     }
                 }
                 vaaraTunnus.setText("Sähköposti ja salasana ei täsmää");
