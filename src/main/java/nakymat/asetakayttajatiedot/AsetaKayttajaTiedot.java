@@ -66,6 +66,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
             nimiKentta.setBounds(100,90,200,40);
             ruutu.add(nimiKentta);
 
+            salasanaLabel.setBounds(23, 130, 200, 40);
             salasanaKentta.setBounds(100,130,200,40);
             opiskelijaRB.setBounds(100,180,100,30);    
             opettajaRB.setBounds(100,210,100,30);
