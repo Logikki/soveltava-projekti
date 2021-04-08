@@ -4,7 +4,6 @@ import nakymat.asetakayttajatiedot.AsetaKayttajaTiedot;
 import java.awt.event.*; 
 import java.util.ArrayList;
 import kayttajat.opiskelija.Opiskelija;
-import kayttajat.opettaja.Opettaja;
 import kayttajat.henkilo.Henkilo;
 import java.io.*;
 
