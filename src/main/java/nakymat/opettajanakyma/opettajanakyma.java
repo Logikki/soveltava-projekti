@@ -4,7 +4,6 @@ import nakymat.asetakayttajatiedot.AsetaKayttajaTiedot;
 import java.awt.event.*; 
 import java.util.ArrayList;
 import kayttajat.opiskelija.Opiskelija;
-import kayttajat.opettaja.Opettaja;
 import kayttajat.henkilo.Henkilo;
 import java.io.*;
 
@@ -43,7 +42,7 @@ public class Opettajanakyma {
             public void actionPerformed(ActionEvent e) {
                 String data = "";
                 if (lista.getSelectedIndex() != -1) {                       
-                    data = "Lisätään kurssisuoritus opiskelijalle:" + lista.getSelectedValue();   
+                    data = "Lisätään kurssisuoritus opiskelijalle " + lista.getSelectedValue();   
                     label.setText(data);
 
                     for (Henkilo hlo : henkilot) {
@@ -54,10 +53,13 @@ public class Opettajanakyma {
                             ik = new JFrame();
                             String knimi = JOptionPane.showInputDialog(ik,"Anna kurssin nimi");
                             String asana = JOptionPane.showInputDialog(ik,"Anna oppilaan arvosana");
-                            o.lisaaKurssiSuoritus(knimi, asana);
-                            henkilot.add(o);
-                            yliKirjoitaTiedosto(henkilot);
-                            System.out.println("Kurssisuoritus lisätty opiskelijalle!");
+
+                            if (knimi.length() > 0 && asana.length() > 0) {
+                                o.lisaaKurssiSuoritus(knimi, asana);
+                                henkilot.add(o);
+                                yliKirjoitaTiedosto(henkilot);
+                                System.out.println("Kurssisuoritus lisätty opiskelijalle!");
+                                }
                             }
                         }
 

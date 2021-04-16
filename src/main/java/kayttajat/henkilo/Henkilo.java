@@ -16,8 +16,13 @@ public class Henkilo implements java.io.Serializable {
 	public void setNimi(String nimi) {
 		this.nimi = nimi;
 	}
-	public String getSalasana() {
-		return salasana;
+	public boolean onkoSalasana(String salasana) {
+		if (salasana.equals(this.salasana)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	public void setSalasana(String salasana) {
 		this.salasana = salasana;
@@ -31,6 +36,6 @@ public class Henkilo implements java.io.Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Henkilo [nimi=" + nimi + ", salasana=" + salasana + ", sposti=" + sposti + "]";
+		return "[nimi=" + nimi + ", salasana=" + salasana + ", sposti=" + sposti + "]";
 	}
 }
