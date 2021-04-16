@@ -13,7 +13,7 @@ import java.io.*;
 public class Opettajanakyma implements ActionListener {
     protected Opettaja ope;
     JFrame ikkuna;
-    JLabel tervetuluoa, header;
+    JLabel tervetuloa;
     JMenu asetukset;
     JMenuItem kirjauduUlos, exit;
     JMenuBar palkki;
@@ -32,6 +32,8 @@ public class Opettajanakyma implements ActionListener {
         asetukset.add(exit);
         palkki.add(asetukset);
         kirjauduUlos.addActionListener(this);
+        tervetuloa = new JLabel(ope.getNimi());
+		tervetuloa.setBounds(10, -10, 300, 50);
 
 
         //Listat oppilaille
@@ -75,7 +77,7 @@ public class Opettajanakyma implements ActionListener {
             }
         });
 
-        ikkuna.add(lista); ikkuna.add(b);
+        ikkuna.add(lista); ikkuna.add(b); ikkuna.add(tervetuloa); ikkuna.setJMenuBar(palkki);
         ikkuna.setSize(400,400);
         ikkuna.setLayout(null);
         ikkuna.setVisible(true);
