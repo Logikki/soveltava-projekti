@@ -100,7 +100,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();
                 for (Henkilo kayttaja : kayttajat) { //käydään läpi käyttäjät
                     if (kayttaja.getSposti().equals(sahkoPostiKentta.getText()) 
-                    && kayttaja.getSalasana().equals(salasana)) {
+                    && kayttaja.onkoSalasana(salasana)) {
                         Henkilo kirjautuva = kayttaja;
                         if (kirjautuva.getClass() == Opettaja.class) {
                             Opettaja kayttajaOpettaja = (Opettaja)kayttaja;

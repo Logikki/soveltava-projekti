@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class oppilaanNakyma implements ActionListener {
     protected Opiskelija kayttaja;
 	JFrame ruutu;
-	JLabel tervetuloa,header, ka;
+	JLabel tervetuloa,header, ka, kurssejaSuoritettu;
 	JMenu asetukset;
 	JMenuItem kirjauduUlos, exit;
 	JMenuBar palkki;
@@ -27,6 +27,8 @@ public class oppilaanNakyma implements ActionListener {
 		kirjauduUlos.addActionListener(this);
 		//Labelit
 		ka = new JLabel();
+		kurssejaSuoritettu = new JLabel();
+		kurssejaSuoritettu.setBounds(100,270,200,50);
 		ka.setBounds(100, 250, 200, 50);
 		tervetuloa = new JLabel(kayttaja.getNimi() + ", " + kayttaja.getOpNumero());
 		tervetuloa.setBounds(10, -10, 300, 50);
@@ -42,8 +44,10 @@ public class oppilaanNakyma implements ActionListener {
 		JList<String> list = new JList<>(suoritukset);
 		list.setBounds(100,50, 200,200); 
 		ka.setText("Keskiarvo: " + kayttaja.annaKeskiarvo());
+		kurssejaSuoritettu.setText("Kursseja suoritettu: " + kurssit.size());
 		//Alustetaan ruutu 
-		ruutu.add(list); ruutu.add(header); ruutu.add(tervetuloa); ruutu.setJMenuBar(palkki); ruutu.add(ka);
+		ruutu.add(list); ruutu.add(header); ruutu.add(tervetuloa); ruutu.setJMenuBar(palkki); 
+		ruutu.add(ka); ruutu.add(kurssejaSuoritettu);
 		ruutu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		ruutu.setSize(400,400); ruutu.setLayout(null); ruutu.setVisible(true); 
 		
