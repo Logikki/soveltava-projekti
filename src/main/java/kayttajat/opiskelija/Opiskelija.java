@@ -28,7 +28,7 @@ public class Opiskelija extends Henkilo {
 		this.kurssiSuoritukset.put(kurssi, arvosana);
 	}
 	public double annaKeskiarvo() {
-		int ka = 0;
+		double ka = 0;
 		if (kurssiSuoritukset.size() != 0) {
 			for (String asana : kurssiSuoritukset.keySet()) {
 				ka += Integer.valueOf(kurssiSuoritukset.get(asana));
