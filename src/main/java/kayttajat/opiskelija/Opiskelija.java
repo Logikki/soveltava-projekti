@@ -27,8 +27,19 @@ public class Opiskelija extends Henkilo {
 	public void lisaaKurssiSuoritus(String kurssi, String arvosana) {
 		this.kurssiSuoritukset.put(kurssi, arvosana);
 	}
+	public double annaKeskiarvo() {
+		int ka = 0;
+		if (kurssiSuoritukset.size() != 0) {
+			for (String asana : kurssiSuoritukset.keySet()) {
+				ka += Integer.valueOf(kurssiSuoritukset.get(asana));
+			}
+			ka = ka/kurssiSuoritukset.size();
+			return ka;
+	}
+	return 0.0;
+}
 	@Override
 	public String toString() {
-		return super.toString() + "[kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";
+		return "Opiskelija" + super.toString() + "[kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";
 	}
 }
