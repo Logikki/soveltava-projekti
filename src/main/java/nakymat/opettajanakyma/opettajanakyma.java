@@ -9,6 +9,7 @@ import kayttajat.opettaja.*;
 import kayttajat.opiskelija.Opiskelija;
 import kayttajat.henkilo.Henkilo;
 import java.io.*;
+import java.util.HashMap;
 
 public class Opettajanakyma implements ActionListener {
     protected Opettaja ope;
@@ -17,7 +18,7 @@ public class Opettajanakyma implements ActionListener {
     JMenu asetukset;
     JMenuItem kirjauduUlos, exit;
     JMenuBar palkki;
-    JButton b;
+    JButton b, n;
 
     public Opettajanakyma(Opettaja ope) {
         this.ope = ope;
@@ -49,9 +50,9 @@ public class Opettajanakyma implements ActionListener {
         }
 
         JList<String> lista = new JList<>(oppilaat);
-        lista.setBounds(150,150, 100,100);
+        lista.setBounds(150,80, 100,300);
 
-        //Nappi, josta opettaja voi lisätä kurssisuoritukset valitsemalleen oppilaalle
+        //Nappi, josta opettaja voi lisätä kurssisuorituksen valitsemalleen oppilaalle
         b=new JButton("Lisää kurssisuoritus");  
         b.setBounds(300,150,170,30);
         b.addActionListener(new ActionListener() {
@@ -62,8 +63,8 @@ public class Opettajanakyma implements ActionListener {
                             Opiskelija o = (Opiskelija) hlo;
                             henkilot.remove(hlo);
                             JFrame ik = new JFrame();
-                            String knimi = JOptionPane.showInputDialog(ik,"Anna kurssin nimi");
-                            String asana = JOptionPane.showInputDialog(ik,"Anna oppilaan arvosana");
+                            String knimi = JOptionPane.showInputDialog(ik,"Syötä kurssin tunnus");
+                            String asana = JOptionPane.showInputDialog(ik,"Syötä oppilaan " + o.getNimi() + " kurssista saama arvosana");
         
                             if (knimi.length() > 0 && asana.length() > 0) {
                                 o.lisaaKurssiSuoritus(knimi, asana);
@@ -77,8 +78,37 @@ public class Opettajanakyma implements ActionListener {
             }
         });
 
-        ikkuna.add(lista); ikkuna.add(b); ikkuna.add(tervetuloa); ikkuna.setJMenuBar(palkki);
-        ikkuna.setSize(400,400);
+        n = new JButton("Tarkastele suorituksia");
+        n.setBounds(300,100,170,30);
+        n.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                for (Henkilo hlo : henkilot) {
+                    if (hlo.getNimi().equals(lista.getSelectedValue())) {
+                        Opiskelija o = (Opiskelija) hlo;
+
+                        JFrame ik = new JFrame();
+                        DefaultListModel<String> suoritukset = new DefaultListModel<>();  
+		                HashMap<String,String> kurssit = o.getKurssiSuoritukset();	
+		                suoritukset.addElement("Arvosana" + "                  " + "Kurssin tunnus" );
+		                
+                        for (String kurssi : kurssit.keySet()) {
+			                suoritukset.addElement(kurssit.get(kurssi) + "                                  " + kurssi );
+		                    }
+
+		                JList<String> suor = new JList<>(suoritukset);
+		                suor.setBounds(100,50, 200,300);
+
+                        ik.add(suor);
+                        ik.setSize(400, 600);
+                        ik.setLayout(null);
+                        ik.setVisible(true);
+                }
+            }
+        }
+        });
+
+        ikkuna.add(lista); ikkuna.add(b); ikkuna.add(n); ikkuna.add(tervetuloa); ikkuna.setJMenuBar(palkki);
+        ikkuna.setSize(600,600);
         ikkuna.setLayout(null);
         ikkuna.setVisible(true);
         ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
