@@ -13,7 +13,6 @@ public class oppilaanNakyma implements ActionListener {
 	JMenu asetukset;
 	JMenuItem kirjauduUlos, exit;
 	JMenuBar palkki;
-	protected int keskiarvo;
 	public oppilaanNakyma(Opiskelija kayttaja) {
 		this.kayttaja = kayttaja;
 		ruutu = new JFrame();
@@ -33,21 +32,16 @@ public class oppilaanNakyma implements ActionListener {
 		tervetuloa.setBounds(10, -10, 300, 50);
 		header = new JLabel("Suoritetut kurssit: ");
 		header.setBounds(100, 10, 250, 50);
-		//Tehdään suorituslista ja lasketaan keskiarvo
-		keskiarvo = 0;
+		//Tehdään suorituslista
 		DefaultListModel<String> suoritukset = new DefaultListModel<>();  
 		HashMap<String,String> kurssit = kayttaja.getKurssiSuoritukset();	
 		suoritukset.addElement("Arvosana" + "     " + "Kurssin nimi" );
-		if (kurssit.size() != 0) {
-			for (String kurssi : kurssit.keySet()) {
-				suoritukset.addElement(kurssit.get(kurssi) + "                " + kurssi );
-				keskiarvo += Integer.parseInt(kurssit.get(kurssi)); 
-			}
-			keskiarvo = keskiarvo/kurssit.size();
+		for (String kurssi : kurssit.keySet()) {
+			suoritukset.addElement(kurssit.get(kurssi) + "                " + kurssi );
 		}
 		JList<String> list = new JList<>(suoritukset);
 		list.setBounds(100,50, 200,200); 
-		ka.setText("Keskiarvo: " + keskiarvo);
+		ka.setText("Keskiarvo: " + kayttaja.annaKeskiarvo());
 		//Alustetaan ruutu 
 		ruutu.add(list); ruutu.add(header); ruutu.add(tervetuloa); ruutu.setJMenuBar(palkki); ruutu.add(ka);
 		ruutu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
@@ -64,6 +58,7 @@ public class oppilaanNakyma implements ActionListener {
 			ruutu.dispose();
 			new Aloitusnaytto();
 		}
+		
 	}
 	}
     
