@@ -53,10 +53,13 @@ public class Opettajanakyma {
                             ik = new JFrame();
                             String knimi = JOptionPane.showInputDialog(ik,"Anna kurssin nimi");
                             String asana = JOptionPane.showInputDialog(ik,"Anna oppilaan arvosana");
-                            o.lisaaKurssiSuoritus(knimi, asana);
-                            henkilot.add(o);
-                            yliKirjoitaTiedosto(henkilot);
-                            System.out.println("Kurssisuoritus lisätty opiskelijalle!");
+
+                            if (knimi.length() > 0 && asana.length() > 0) {
+                                o.lisaaKurssiSuoritus(knimi, asana);
+                                henkilot.add(o);
+                                yliKirjoitaTiedosto(henkilot);
+                                System.out.println("Kurssisuoritus lisätty opiskelijalle!");
+                                }
                             }
                         }
 
