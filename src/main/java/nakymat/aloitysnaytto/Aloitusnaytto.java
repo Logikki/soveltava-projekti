@@ -3,6 +3,11 @@ import nakymat.asetakayttajatiedot.AsetaKayttajaTiedot;
 import javax.swing.*;  
 import java.awt.event.*;  
 
+/** Aloitusnäyttö
+ * Kysytään halutaanko kirjautua vai rekisteröityä
+ * @author Roni
+    */
+
  public class Aloitusnaytto implements ActionListener {
     JButton UusiKayttaja, VanhaKayttaja;
     JFrame ruutu;
