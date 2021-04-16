@@ -31,7 +31,7 @@ public class Opiskelija extends Henkilo {
 		int ka = 0;
 		if (kurssiSuoritukset.size() != 0) {
 			for (String asana : kurssiSuoritukset.keySet()) {
-				ka += Integer.parseInt(asana) 
+				ka += Integer.valueOf(kurssiSuoritukset.get(asana));
 			}
 			ka = ka/kurssiSuoritukset.size();
 			return ka;
@@ -40,6 +40,6 @@ public class Opiskelija extends Henkilo {
 }
 	@Override
 	public String toString() {
-		return "Opiskelija [kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";
+		return "Opiskelija" + super.toString() + "[kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";
 	}
 }

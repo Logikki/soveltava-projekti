@@ -31,6 +31,6 @@ public class Henkilo implements java.io.Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Henkilo [nimi=" + nimi + ", salasana=" + salasana + ", sposti=" + sposti + "]";
+		return "[nimi=" + nimi + ", salasana=" + salasana + ", sposti=" + sposti + "]";
 	}
 }
