@@ -33,7 +33,7 @@ public class Opettajanakyma implements ActionListener {
         asetukset.add(exit);
         palkki.add(asetukset);
         kirjauduUlos.addActionListener(this);
-        tervetuloa = new JLabel(ope.getNimi());
+        tervetuloa = new JLabel("Kirjautuneena käyttäjänä " + ope.getNimi());
 		tervetuloa.setBounds(10, -10, 300, 50);
 
 
@@ -51,6 +51,8 @@ public class Opettajanakyma implements ActionListener {
 
         JList<String> lista = new JList<>(oppilaat);
         lista.setBounds(150,80, 100,300);
+        JLabel opiskelijatL = new JLabel("Opiskelijat:");
+        opiskelijatL.setBounds(150, 40, 100, 50);
 
         //Nappi, josta opettaja voi lisätä kurssisuorituksen valitsemalleen oppilaalle
         b=new JButton("Lisää kurssisuoritus");  
@@ -64,7 +66,7 @@ public class Opettajanakyma implements ActionListener {
                             henkilot.remove(hlo);
                             JFrame ik = new JFrame();
                             String knimi = JOptionPane.showInputDialog(ik,"Syötä kurssin tunnus");
-                            String asana = JOptionPane.showInputDialog(ik,"Syötä oppilaan " + o.getNimi() + " kurssista saama arvosana");
+                            String asana = JOptionPane.showInputDialog(ik,"Syötä oppilaan " + o.getNimi() + " kurssista " + knimi + " saama arvosana");
         
                             if (knimi.length() > 0 && asana.length() > 0) {
                                 o.lisaaKurssiSuoritus(knimi, asana);
@@ -87,6 +89,9 @@ public class Opettajanakyma implements ActionListener {
                         Opiskelija o = (Opiskelija) hlo;
 
                         JFrame ik = new JFrame();
+                        JLabel opp = new JLabel("Opiskelijan " + o.getNimi() + " kurssisuoritukset:");
+                        opp.setBounds(10, 0, 250, 50);
+
                         DefaultListModel<String> suoritukset = new DefaultListModel<>();  
 		                HashMap<String,String> kurssit = o.getKurssiSuoritukset();	
 		                suoritukset.addElement("Arvosana" + "                  " + "Kurssin tunnus" );
@@ -96,9 +101,9 @@ public class Opettajanakyma implements ActionListener {
 		                    }
 
 		                JList<String> suor = new JList<>(suoritukset);
-		                suor.setBounds(100,50, 200,300);
+		                suor.setBounds(100,100, 200,300);
 
-                        ik.add(suor);
+                        ik.add(suor); ik.add(opp);
                         ik.setSize(400, 600);
                         ik.setLayout(null);
                         ik.setVisible(true);
@@ -107,7 +112,8 @@ public class Opettajanakyma implements ActionListener {
         }
         });
 
-        ikkuna.add(lista); ikkuna.add(b); ikkuna.add(n); ikkuna.add(tervetuloa); ikkuna.setJMenuBar(palkki);
+        //pääikkunan asetus
+        ikkuna.add(lista); ikkuna.add(b); ikkuna.add(n); ikkuna.add(tervetuloa); ikkuna.setJMenuBar(palkki); ikkuna.add(opiskelijatL);
         ikkuna.setSize(600,600);
         ikkuna.setLayout(null);
         ikkuna.setVisible(true);
