@@ -7,7 +7,6 @@ import java.awt.event.*;
  * Kysytään halutaanko kirjautua vai rekisteröityä
  * @author Roni
     */
-
  public class Aloitusnaytto implements ActionListener {
     JButton UusiKayttaja, VanhaKayttaja;
     JFrame ruutu;
@@ -29,6 +28,7 @@ import java.awt.event.*;
         }
 
 	@Override
+    /** Nappien toiminnallisuus. @return kirjautumis tai rekisteröitymisnäyttö */
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe

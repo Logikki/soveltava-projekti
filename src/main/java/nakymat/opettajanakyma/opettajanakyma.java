@@ -91,7 +91,7 @@ public class Opettajanakyma implements ActionListener {
         n = new JButton("Tarkastele suorituksia");
         n.setBounds(300,100,170,30);
         n.addActionListener(new ActionListener() {
-            /** Opettaja voi tästä napista tarkastella valitsemansa oppilaan tallennettuja kurssisuorituksia */
+            /** Opettaja voi tästä napista tarkastella valitsemansa oppilaan tallennettuja kurssisuorituksia @version 1.0 */
             public void actionPerformed(ActionEvent e) {
                 for (Henkilo hlo : henkilot) {
                     if (hlo.getNimi().equals(lista.getSelectedValue())) {
@@ -131,7 +131,7 @@ public class Opettajanakyma implements ActionListener {
     }
 
     @Override
-    /**Asetuspalkin nappien toiminnallisuus */
+    /**Asetuspalkin nappien toiminnallisuus  @version 1.0*/
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exit) {
             ikkuna.dispatchEvent(new WindowEvent(ikkuna, WindowEvent.WINDOW_CLOSING));
