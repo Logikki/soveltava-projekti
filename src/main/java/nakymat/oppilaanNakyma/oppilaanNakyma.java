@@ -54,7 +54,8 @@ public class oppilaanNakyma implements ActionListener {
 		ruutu.setSize(400,400); ruutu.setLayout(null); ruutu.setVisible(true); 
 }
 	@Override
-	/** Nappien toiminnallisuus */
+	/** Nappien toiminnallisuus  
+	 * @since 1.0 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == exit ) {
 			ruutu.dispatchEvent(new WindowEvent(ruutu, WindowEvent.WINDOW_CLOSING));

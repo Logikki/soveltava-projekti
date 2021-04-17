@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"kayttajat.henkilo"},{"l":"kayttajat.opettaja"},{"l":"kayttajat.opiskelija"},{"l":"nakymat.aloitysnaytto"},{"l":"nakymat.asetakayttajatiedot"},{"l":"nakymat.opettajanakyma"},{"l":"nakymat.oppilaanNakyma"}];updateSearchResults();
