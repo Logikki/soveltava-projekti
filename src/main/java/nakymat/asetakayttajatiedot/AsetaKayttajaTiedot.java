@@ -93,7 +93,8 @@ public class AsetaKayttajaTiedot implements ActionListener {
                     && kayttaja.onkoSalasana(salasana)) {
                         Henkilo kirjautuva = kayttaja;
                         if (kirjautuva.getClass() == Opettaja.class) {
-                            new Opettajanakyma();
+                            Opettaja kayttajaOpettaja = (Opettaja)kayttaja;
+                            new Opettajanakyma(kayttajaOpettaja);
                         }
                         else {
                             Opiskelija kayttajaOpiskelija = (Opiskelija)kayttaja;
