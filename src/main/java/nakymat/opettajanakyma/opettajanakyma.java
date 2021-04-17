@@ -1,6 +1,5 @@
 package nakymat.opettajanakyma;
 import javax.swing.*;
-
 import nakymat.aloitysnaytto.Aloitusnaytto;
 import nakymat.asetakayttajatiedot.AsetaKayttajaTiedot;
 import java.awt.event.*; 
@@ -11,6 +10,10 @@ import kayttajat.henkilo.Henkilo;
 import java.io.*;
 import java.util.HashMap;
 
+
+/** Kun sisään kirjautuva käyttäjä tunnistetaan opettajaksi, luodaan tämä näkymä
+ * @author Aleksi K
+*/
 public class Opettajanakyma implements ActionListener {
     protected Opettaja ope;
     JFrame ikkuna;
@@ -20,6 +23,10 @@ public class Opettajanakyma implements ActionListener {
     JMenuBar palkki;
     JButton b, n;
 
+
+    /** Luo opettajalle suunnitellun näkymän.
+     * @param ope Opettajaolio, jolle/josta näkymä luodaan.
+    */
     public Opettajanakyma(Opettaja ope) {
         this.ope = ope;
         ikkuna = new JFrame();
@@ -58,6 +65,7 @@ public class Opettajanakyma implements ActionListener {
         b=new JButton("Lisää kurssisuoritus");  
         b.setBounds(300,150,170,30);
         b.addActionListener(new ActionListener() {
+            /** Opettaja voi tästä napista lisätä uuden kurssisuorituksen valitsemalleen oppilaalle */
             public void actionPerformed(ActionEvent e) {
                 if (lista.getSelectedIndex() != -1) {                       
                     for (Henkilo hlo : henkilot) {
@@ -83,6 +91,7 @@ public class Opettajanakyma implements ActionListener {
         n = new JButton("Tarkastele suorituksia");
         n.setBounds(300,100,170,30);
         n.addActionListener(new ActionListener() {
+            /** Opettaja voi tästä napista tarkastella valitsemansa oppilaan tallennettuja kurssisuorituksia */
             public void actionPerformed(ActionEvent e) {
                 for (Henkilo hlo : henkilot) {
                     if (hlo.getNimi().equals(lista.getSelectedValue())) {
@@ -122,6 +131,7 @@ public class Opettajanakyma implements ActionListener {
     }
 
     @Override
+    /**Asetuspalkin nappien toiminnallisuus */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exit) {
             ikkuna.dispatchEvent(new WindowEvent(ikkuna, WindowEvent.WINDOW_CLOSING));
@@ -133,7 +143,9 @@ public class Opettajanakyma implements ActionListener {
         }
     }
 
-
+    /** Tallentaa luodut henkilöoliot tiedostoon 'kayttajat.ser'
+     * @param kayttajat ArrayList tallennetuista käyttäjistä
+     */
     public static void yliKirjoitaTiedosto(ArrayList<Henkilo> kayttajat) {
         try {
             FileOutputStream WD = new FileOutputStream("src/main/resources/kayttajat.ser");
