@@ -1,5 +1,8 @@
 package kayttajat.henkilo;
 
+/** Käyttäjiä varten tehty henkilö luokka.
+ * Opettaja ja oppilas perivät tämän, niin niistä voi tehdä helposti henkilö listan.
+ */
 public class Henkilo implements java.io.Serializable {
     protected String nimi;
     protected String salasana;
@@ -16,6 +19,7 @@ public class Henkilo implements java.io.Serializable {
 	public void setNimi(String nimi) {
 		this.nimi = nimi;
 	}
+	/** Salasanan oikeellisuuden tarkistamiseksi tehty metodi */
 	public boolean onkoSalasana(String salasana) {
 		if (salasana.equals(this.salasana)) {
 			return true;

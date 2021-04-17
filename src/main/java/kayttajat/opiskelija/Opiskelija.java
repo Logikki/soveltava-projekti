@@ -31,10 +31,16 @@ public class Opiskelija extends Henkilo {
 		double ka = 0;
 		if (kurssiSuoritukset.size() != 0) {
 			for (String asana : kurssiSuoritukset.keySet()) {
-				ka += Integer.valueOf(kurssiSuoritukset.get(asana));
+				try {
+					ka += Integer.valueOf(kurssiSuoritukset.get(asana));
+				}
+				catch (NumberFormatException e) {
+					continue;
 			}
+		}
 			ka = ka/kurssiSuoritukset.size();
 			return ka;
+	
 	}
 	return 0.0;
 }

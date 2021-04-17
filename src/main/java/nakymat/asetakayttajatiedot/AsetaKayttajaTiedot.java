@@ -10,6 +10,11 @@ import nakymat.aloitysnaytto.Aloitusnaytto;
 import nakymat.opettajanakyma.Opettajanakyma;
 import nakymat.oppilaanNakyma.oppilaanNakyma;
 
+/** Näkymä jossa asetetaan käyttäjätiedot. Näkymä on erilainen sen mukaan, ollaanko rekisteröitymässä
+ * vai kirjautumassa sisään vanhalla käyttäjällä.
+ * @author Roni
+ */
+
 public class AsetaKayttajaTiedot implements ActionListener {
     JButton valmis;
     JRadioButton opettajaRB,opiskelijaRB;
@@ -23,21 +28,12 @@ public class AsetaKayttajaTiedot implements ActionListener {
         ruutu= new JFrame();
         ruutu.setLayout(null);
         valmis = new JButton("Valmis");
-        valmis.setBounds(220,180,80,30);
-        valmis.addActionListener(this);
-
-        JLabel spostiLabel = new JLabel("Sähköposti:");
-        spostiLabel.setBounds(10, 50, 200, 40);
-        ruutu.add(spostiLabel);
-        sahkoPostiKentta = new JTextField("");
+        valmis.setBounds(220,130,80,30);
+        valmis.addActionListener(this);   
+        sahkoPostiKentta = new JTextField("Sähköposti");
         sahkoPostiKentta.setBounds(100, 50, 200, 40);
-
-        JLabel salasanaLabel = new JLabel("Salasana:");
-        salasanaLabel.setBounds(23, 90, 200, 40);
-        ruutu.add(salasanaLabel);
         salasanaKentta = new JPasswordField();    
         salasanaKentta.setBounds(100,90,200,40);   
-
         ruutu.add(valmis); 
         ruutu.add(salasanaKentta); ruutu.add(sahkoPostiKentta);
         vaaraTunnus = new JLabel();
@@ -50,27 +46,17 @@ public class AsetaKayttajaTiedot implements ActionListener {
             ButtonGroup bg=new ButtonGroup();
             bg.add(opettajaRB); bg.add(opiskelijaRB);
             opiskelijaRB.addActionListener(this);
-            opettajaRB.addActionListener(this);
-
-            JLabel opNumeroLabel = new JLabel("Op.numero:");
-            opNumeroLabel.setBounds(10, 10, 200, 40);
-            ruutu.add(opNumeroLabel);
-            opNumero = new JTextField("");
+            opiskelijaRB.addActionListener(this);
+            opNumero = new JTextField("Opiskelijanumero");
             opNumero.setBounds(100,10,200,40);
             ruutu.add(opNumero);
-
-            JLabel nimiKenttäLabel = new JLabel("Nimi:");
-            nimiKenttäLabel.setBounds(48, 90, 200, 40);
-            ruutu.add(nimiKenttäLabel);
-            nimiKentta = new JTextField("");
+            nimiKentta = new JTextField("Nimi");
             nimiKentta.setBounds(100,90,200,40);
+            salasanaKentta.setBounds(100,130,200,40);   
             ruutu.add(nimiKentta);
-
-            salasanaLabel.setBounds(23, 130, 200, 40);
-            salasanaKentta.setBounds(100,130,200,40);
-            opiskelijaRB.setBounds(100,180,100,30);    
-            opettajaRB.setBounds(100,210,100,30);
-            valmis.setBounds(220,180,80,30);
+            opiskelijaRB.setBounds(100,160,100,30);    
+            opettajaRB.setBounds(100,180,100,30);
+            valmis.setBounds(220,160,80,30);
             ruutu.add(opiskelijaRB); ruutu.add(opettajaRB);
             opiskelijaRB.setEnabled(true);
         }
@@ -79,6 +65,10 @@ public class AsetaKayttajaTiedot implements ActionListener {
     }
 
     @Override
+    /** Kun käyttäjä painaa valmis nappia, niin rekisteröityessä tallennetaan tiedot Kayttajat.ser tiedostoon. 
+     * Jos taas ollaan kirjautumassa, niin tarkistetaan onko salasana ja käyttäjätunnus oikeat.
+     * @return Aloitusnäyttö jos rekisteröitymässä. Opiskelija tai oppilas näkymä jos kirjautumassa.
+    */
     public void actionPerformed(ActionEvent e){  
         if (e.getSource() == valmis) {
             String salasana = new String(this.salasanaKentta.getPassword());
@@ -110,15 +100,15 @@ public class AsetaKayttajaTiedot implements ActionListener {
                             Opiskelija kayttajaOpiskelija = (Opiskelija)kayttaja;
                             new oppilaanNakyma(kayttajaOpiskelija);
                         }
-                        ruutu.dispose(); return;
                     }
                 }
                 vaaraTunnus.setText("Sähköposti ja salasana ei täsmää");
             }
         }
     }
-//Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
-//uusi käyttäjä tähän listaan ja tallennetaan tiedostoon
+/** Metodi tallentaa uuden käyttäjän kayttajat.ser tiedostoon. 
+ * Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
+ * uusi käyttäjä tähän listaan ja tallennetaan tiedostoon */
     public static void tallennaKayttaja(Henkilo henkilo) {
             try {
                 ArrayList<Henkilo> kayttajat = lataaKayttajat();
@@ -134,7 +124,9 @@ public class AsetaKayttajaTiedot implements ActionListener {
                 System.out.println("ei tallennettu");
         }
         }
-        //Tämä lataa tiedostosta käyttäjät listan ja palauttaa sen
+        /** Tämä metodi lataa tiedostosta käyttäjät listan ja palauttaa sen 
+         * @return lista käyttäjistä
+        */
         @SuppressWarnings("unchecked")
         public static ArrayList<Henkilo> lataaKayttajat() {
             ArrayList<Henkilo> kayttajat = new ArrayList<>();

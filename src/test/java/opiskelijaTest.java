@@ -21,7 +21,7 @@ class opiskelijaTest {
         matti.lisaaKurssiSuoritus("TKO12", "5");
         matti.lisaaKurssiSuoritus("TKO1234", "5");
         matti.lisaaKurssiSuoritus("TKO1234", "3");
-        float ka = (5+5+3)/3;
+        double ka = (5+5+3)/3;
         assertTrue(matti.annaKeskiarvo() == ka);
     }
 }
