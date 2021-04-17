@@ -27,6 +27,10 @@ public class Opiskelija extends Henkilo {
 	public void lisaaKurssiSuoritus(String kurssi, String arvosana) {
 		this.kurssiSuoritukset.put(kurssi, arvosana);
 	}
+
+	/** Metodi opiskelijan kurssisuoritusten keskiarvon laskemiseen
+	 * @return Double-tyyppinen luku
+	 */
 	public double annaKeskiarvo() {
 		double ka = 0;
 		if (kurssiSuoritukset.size() != 0) {
