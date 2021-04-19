@@ -5,7 +5,9 @@ import nakymat.aloitysnaytto.Aloitusnaytto;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.HashMap;    
-
+/** Kun oppilas kirjautuu sisään niin tämä näkymä luodaan 
+ * @author Roni
+*/
 public class oppilaanNakyma implements ActionListener {
     protected Opiskelija kayttaja;
 	JFrame ruutu;
@@ -25,6 +27,7 @@ public class oppilaanNakyma implements ActionListener {
 		asetukset.add(exit);
 		palkki.add(asetukset);
 		kirjauduUlos.addActionListener(this);
+		exit.addActionListener(this);
 		//Labelit
 		ka = new JLabel();
 		kurssejaSuoritettu = new JLabel();
@@ -50,9 +53,11 @@ public class oppilaanNakyma implements ActionListener {
 		ruutu.add(ka); ruutu.add(kurssejaSuoritettu);
 		ruutu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		ruutu.setSize(400,400); ruutu.setLayout(null); ruutu.setVisible(true); 
-		
-
 }
+	/** {@inheritDoc} 
+	 * Nappien toiminnallisuus  
+	 * @since 1.0 */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == exit ) {
@@ -62,7 +67,6 @@ public class oppilaanNakyma implements ActionListener {
 			ruutu.dispose();
 			new Aloitusnaytto();
 		}
-		
 	}
 	}
     

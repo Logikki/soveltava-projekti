@@ -27,17 +27,33 @@ public class Opiskelija extends Henkilo {
 	public void lisaaKurssiSuoritus(String kurssi, String arvosana) {
 		this.kurssiSuoritukset.put(kurssi, arvosana);
 	}
+
+	/** 
+	 * Metodi opiskelijan kurssisuoritusten keskiarvon laskemiseen
+	 * 
+	 * @return Double-tyyppinen luku
+	 */
 	public double annaKeskiarvo() {
 		double ka = 0;
 		if (kurssiSuoritukset.size() != 0) {
 			for (String asana : kurssiSuoritukset.keySet()) {
-				ka += Integer.valueOf(kurssiSuoritukset.get(asana));
+				try {
+					ka += Integer.valueOf(kurssiSuoritukset.get(asana));
+				}
+				catch (NumberFormatException e) {
+					continue;
 			}
+		}
 			ka = ka/kurssiSuoritukset.size();
 			return ka;
+	
 	}
 	return 0.0;
 }
+/** {@inheritDoc} 
+ * 
+ * @return siisti tulostus käyttäjästä
+ */
 	@Override
 	public String toString() {
 		return "Opiskelija" + super.toString() + "[kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";

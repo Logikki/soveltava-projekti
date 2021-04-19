@@ -10,6 +10,10 @@ import nakymat.aloitysnaytto.Aloitusnaytto;
 import nakymat.opettajanakyma.Opettajanakyma;
 import nakymat.oppilaanNakyma.oppilaanNakyma;
 
+/** Näkymä jossa asetetaan käyttäjätiedot. Näkymä on erilainen sen mukaan, ollaanko rekisteröitymässä
+ * vai kirjautumassa sisään vanhalla käyttäjällä.
+ * @author Roni
+ */
 public class AsetaKayttajaTiedot implements ActionListener {
     JButton valmis;
     JRadioButton opettajaRB,opiskelijaRB;
@@ -18,6 +22,10 @@ public class AsetaKayttajaTiedot implements ActionListener {
     JFrame ruutu;
     boolean OnkoUusiKayttaja;
     JLabel vaaraTunnus;
+    /**
+     *  Konstruktori
+     * @param OnkoUusiKayttaja Vastaa onko käyttäjä uusi vai vanha.
+     */
     public AsetaKayttajaTiedot(boolean OnkoUusiKayttaja) {
         this.OnkoUusiKayttaja = OnkoUusiKayttaja;
         ruutu= new JFrame();
@@ -78,7 +86,15 @@ public class AsetaKayttajaTiedot implements ActionListener {
         ruutu.setVisible(true);
     }
 
-    @Override
+/** {@inheritDoc} 
+ * Nappien toiminnallisuus. 
+ * Kun käyttäjä painaa valmis nappia, niin rekisteröityessä tallennetaan tiedot Kayttajat.ser tiedostoon. 
+ * Jos taas ollaan kirjautumassa, niin tarkistetaan onko salasana ja käyttäjätunnus oikeat.
+ * Palautetaan Aloitusnäyttö jos rekisteröitymässä. Opiskelija tai oppilas näkymä jos kirjautumassa.
+ * @param e on nappi mistä toiminto on tullut.
+ * @since 1.0
+*/
+@Override
     public void actionPerformed(ActionEvent e){  
         if (e.getSource() == valmis) {
             String salasana = new String(this.salasanaKentta.getPassword());
@@ -103,7 +119,8 @@ public class AsetaKayttajaTiedot implements ActionListener {
                     && kayttaja.onkoSalasana(salasana)) {
                         Henkilo kirjautuva = kayttaja;
                         if (kirjautuva.getClass() == Opettaja.class) {
-                            new Opettajanakyma();
+                            Opettaja kayttajaOpettaja = (Opettaja)kayttaja;
+                            new Opettajanakyma(kayttajaOpettaja);
                         }
                         else {
                             Opiskelija kayttajaOpiskelija = (Opiskelija)kayttaja;
@@ -116,37 +133,49 @@ public class AsetaKayttajaTiedot implements ActionListener {
             }
         }
     }
-//Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
-//uusi käyttäjä tähän listaan ja tallennetaan tiedostoon
-    public static void tallennaKayttaja(Henkilo henkilo) {
-            try {
-                ArrayList<Henkilo> kayttajat = lataaKayttajat();
-                kayttajat.add(henkilo);
-                FileOutputStream WD = new FileOutputStream("src/main/resources/kayttajat.ser");
-                ObjectOutputStream kirjoitaTiedostoon = new ObjectOutputStream(WD);
-                kirjoitaTiedostoon.writeObject(kayttajat);
-                kirjoitaTiedostoon.flush();
-                kirjoitaTiedostoon.close();
-                System.out.println("Tallennettu" + kayttajat.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("ei tallennettu");
-        }
-        }
-        //Tämä lataa tiedostosta käyttäjät listan ja palauttaa sen
-        @SuppressWarnings("unchecked")
-        public static ArrayList<Henkilo> lataaKayttajat() {
-            ArrayList<Henkilo> kayttajat = new ArrayList<>();
-            try {
-                FileInputStream readData = new FileInputStream("src/main/resources/kayttajat.ser");
-                ObjectInputStream readStream = new ObjectInputStream(readData);
-                kayttajat = (ArrayList<Henkilo>) readStream.readObject();
-                readStream.close();
-                
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-            return kayttajat;
+
+/** 
+ * Metodi tallentaa uuden käyttäjän kayttajat.ser tiedostoon. 
+ * Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
+ * uusi käyttäjä tähän listaan ja tallennetaan tiedostoon
+ * @since 1.0 
+ * @param henkilo on käyttäjä joka tallennetaan. 
+*/
+public static void tallennaKayttaja(Henkilo henkilo) {
+        try {
+            ArrayList<Henkilo> kayttajat = lataaKayttajat();
+            kayttajat.add(henkilo);
+            FileOutputStream WD = new FileOutputStream("src/main/resources/kayttajat.ser");
+            ObjectOutputStream kirjoitaTiedostoon = new ObjectOutputStream(WD);
+            kirjoitaTiedostoon.writeObject(kayttajat);
+            kirjoitaTiedostoon.flush();
+            kirjoitaTiedostoon.close();
+            System.out.println("Tallennettu" + kayttajat.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ei tallennettu");
     }
+}
+    
+
+/** 
+ * Tämä metodi lataa tiedostosta käyttäjät listan ja palauttaa sen.
+ * 
+* @return Lista käyttäjistä
+* @since 1.0
+*/
+@SuppressWarnings("unchecked")
+public static ArrayList<Henkilo> lataaKayttajat() {
+    ArrayList<Henkilo> kayttajat = new ArrayList<>();
+    try {
+        FileInputStream readData = new FileInputStream("src/main/resources/kayttajat.ser");
+        ObjectInputStream readStream = new ObjectInputStream(readData);
+        kayttajat = (ArrayList<Henkilo>) readStream.readObject();
+        readStream.close();
+    }
+    catch (Exception e) {
+        e.printStackTrace();
+    }
+    return kayttajat;
+}
 }
