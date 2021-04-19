@@ -73,9 +73,10 @@ public class Opettajanakyma implements ActionListener {
                             Opiskelija o = (Opiskelija) hlo;
                             henkilot.remove(hlo);
                             JFrame ik = new JFrame();
+            
                             String knimi = JOptionPane.showInputDialog(ik,"Syötä kurssin tunnus");
                             String asana = JOptionPane.showInputDialog(ik,"Syötä oppilaan " + o.getNimi() + " kurssista " + knimi + " saama arvosana");
-        
+    
                             if (knimi.length() > 0 && asana.length() > 0) {
                                 o.lisaaKurssiSuoritus(knimi, asana);
                                 henkilot.add(o);
@@ -91,7 +92,7 @@ public class Opettajanakyma implements ActionListener {
         n = new JButton("Tarkastele suorituksia");
         n.setBounds(300,100,170,30);
         n.addActionListener(new ActionListener() {
-            /** Opettaja voi tästä napista tarkastella valitsemansa oppilaan tallennettuja kurssisuorituksia @version 1.0 */
+            /** Opettaja voi tästä napista tarkastella valitsemansa oppilaan tallennettuja kurssisuorituksia*/
             public void actionPerformed(ActionEvent e) {
                 for (Henkilo hlo : henkilot) {
                     if (hlo.getNimi().equals(lista.getSelectedValue())) {
@@ -131,7 +132,7 @@ public class Opettajanakyma implements ActionListener {
     }
 
     @Override
-    /**Asetuspalkin nappien toiminnallisuus  @version 1.0*/
+    /**Asetuspalkin nappien toiminnallisuus*/
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exit) {
             ikkuna.dispatchEvent(new WindowEvent(ikkuna, WindowEvent.WINDOW_CLOSING));
