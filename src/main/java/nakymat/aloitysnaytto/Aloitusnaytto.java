@@ -10,7 +10,11 @@ import java.awt.event.*;
  public class Aloitusnaytto implements ActionListener {
     JButton UusiKayttaja, VanhaKayttaja;
     JFrame ruutu;
-
+    /** 
+     * Alkunäytön konstruktori.
+     * Näyttää napit "Uusi käyttäjä" ja "Vanha käyttäjä".
+     * @since 1.0
+     */
     public Aloitusnaytto() {
         ruutu= new JFrame();
         ruutu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
@@ -27,8 +31,12 @@ import java.awt.event.*;
         ruutu.setVisible(true);  
         }
 
-	@Override
-    /** Nappien toiminnallisuus. @return kirjautumis tai rekisteröitymisnäyttö */
+	
+    /** {@inheritDoc}
+     * Nappien toiminnallisuus. 
+     * @return kirjautumis tai rekisteröitymisnäyttö.
+     */
+    @Override
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == UusiKayttaja) { //Suoritetaan rekisteröitymisvaihe

@@ -28,7 +28,9 @@ public class Opiskelija extends Henkilo {
 		this.kurssiSuoritukset.put(kurssi, arvosana);
 	}
 
-	/** Metodi opiskelijan kurssisuoritusten keskiarvon laskemiseen
+	/** 
+	 * Metodi opiskelijan kurssisuoritusten keskiarvon laskemiseen
+	 * 
 	 * @return Double-tyyppinen luku
 	 */
 	public double annaKeskiarvo() {
@@ -48,6 +50,10 @@ public class Opiskelija extends Henkilo {
 	}
 	return 0.0;
 }
+/** {@inheritDoc} 
+ * 
+ * @return siisti tulostus käyttäjästä
+ */
 	@Override
 	public String toString() {
 		return "Opiskelija" + super.toString() + "[kurssiSuoritukset=" + kurssiSuoritukset + ", opNumero=" + opNumero + "]";

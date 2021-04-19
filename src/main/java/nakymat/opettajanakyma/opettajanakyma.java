@@ -134,7 +134,9 @@ public class Opettajanakyma implements ActionListener {
 
     
     /** {@inheritDoc}
-     * Asetuspalkin nappien toiminnallisuus */
+     * Asetuspalkin nappien toiminnallisuus 
+     * @param e on tuleva komento.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exit) {
@@ -147,7 +149,8 @@ public class Opettajanakyma implements ActionListener {
         }
     }
 
-    /** Tallentaa luodut henkilöoliot tiedostoon 'kayttajat.ser'
+    /** 
+     * Tallentaa luodut henkilöoliot tiedostoon 'kayttajat.ser'
      * @param kayttajat ArrayList tallennetuista käyttäjistä
      */
     public static void yliKirjoitaTiedosto(ArrayList<Henkilo> kayttajat) {

@@ -19,7 +19,12 @@ public class Henkilo implements java.io.Serializable {
 	public void setNimi(String nimi) {
 		this.nimi = nimi;
 	}
-	/** Salasanan oikeellisuuden tarkistamiseksi tehty metodi */
+	/** 
+	 * Salasanan oikeellisuuden tarkistamiseksi tehty metodi.
+	 * @param salasana salasana.
+	 * 
+	 * @return vastaus onko salasana oikein.
+	 */
 	public boolean onkoSalasana(String salasana) {
 		if (salasana.equals(this.salasana)) {
 			return true;
@@ -38,6 +43,11 @@ public class Henkilo implements java.io.Serializable {
 	public void setSposti(String sposti) {
 		this.sposti = sposti;
 	}
+	
+	/** {@inheritDoc} 
+ 	* 
+ 	* @return siisti tulostus käyttäjästä
+ 	*/
 	@Override
 	public String toString() {
 		return "[nimi=" + nimi + ", salasana=" + salasana + ", sposti=" + sposti + "]";

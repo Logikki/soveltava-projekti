@@ -22,8 +22,9 @@ public class AsetaKayttajaTiedot implements ActionListener {
     JFrame ruutu;
     boolean OnkoUusiKayttaja;
     JLabel vaaraTunnus;
-    /** Konstruktori
-     * @param onkoUusikayttaja Vastaa onko käyttäjä uusi vai vanha.
+    /**
+     *  Konstruktori
+     * @param OnkoUusiKayttaja Vastaa onko käyttäjä uusi vai vanha.
      */
     public AsetaKayttajaTiedot(boolean OnkoUusiKayttaja) {
         this.OnkoUusiKayttaja = OnkoUusiKayttaja;
@@ -86,13 +87,13 @@ public class AsetaKayttajaTiedot implements ActionListener {
     }
 
 /** {@inheritDoc} 
- * Toiminnallisuus. 
+ * Nappien toiminnallisuus. 
  * Kun käyttäjä painaa valmis nappia, niin rekisteröityessä tallennetaan tiedot Kayttajat.ser tiedostoon. 
  * Jos taas ollaan kirjautumassa, niin tarkistetaan onko salasana ja käyttäjätunnus oikeat.
  * Palautetaan Aloitusnäyttö jos rekisteröitymässä. Opiskelija tai oppilas näkymä jos kirjautumassa.
  * @param e on nappi mistä toiminto on tullut.
  * @since 1.0
-* */
+*/
 @Override
     public void actionPerformed(ActionEvent e){  
         if (e.getSource() == valmis) {
@@ -133,12 +134,13 @@ public class AsetaKayttajaTiedot implements ActionListener {
         }
     }
 
-/** Metodi tallentaa uuden käyttäjän kayttajat.ser tiedostoon. 
+/** 
+ * Metodi tallentaa uuden käyttäjän kayttajat.ser tiedostoon. 
  * Ensin otetaan tiedostosta mahdolliset valmiit käyttäjät listaan, sitten lisätään 
  * uusi käyttäjä tähän listaan ja tallennetaan tiedostoon
  * @since 1.0 
  * @param henkilo on käyttäjä joka tallennetaan. 
- * */
+*/
 public static void tallennaKayttaja(Henkilo henkilo) {
         try {
             ArrayList<Henkilo> kayttajat = lataaKayttajat();
@@ -156,7 +158,9 @@ public static void tallennaKayttaja(Henkilo henkilo) {
 }
     
 
-/** Tämä metodi lataa tiedostosta käyttäjät listan ja palauttaa sen.
+/** 
+ * Tämä metodi lataa tiedostosta käyttäjät listan ja palauttaa sen.
+ * 
 * @return Lista käyttäjistä
 * @since 1.0
 */
