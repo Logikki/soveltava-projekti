@@ -154,7 +154,7 @@ public static void tallennaKayttaja(Henkilo henkilo) {
 @SuppressWarnings("unchecked")
 
 /** Tämä metodi lataa tiedostosta käyttäjät listan ja palauttaa sen.
-* @return ArrayList<Henkilo> käyttäjistä
+* @return Lista käyttäjistä
 * @since 1.0
 */
 public static ArrayList<Henkilo> lataaKayttajat() {

@@ -27,6 +27,7 @@ public class oppilaanNakyma implements ActionListener {
 		asetukset.add(exit);
 		palkki.add(asetukset);
 		kirjauduUlos.addActionListener(this);
+		exit.addActionListener(this);
 		//Labelit
 		ka = new JLabel();
 		kurssejaSuoritettu = new JLabel();

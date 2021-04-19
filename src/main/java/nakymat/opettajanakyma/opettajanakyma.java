@@ -40,6 +40,7 @@ public class Opettajanakyma implements ActionListener {
         asetukset.add(exit);
         palkki.add(asetukset);
         kirjauduUlos.addActionListener(this);
+        exit.addActionListener(this);
         tervetuloa = new JLabel("Kirjautuneena käyttäjänä " + ope.getNimi());
 		tervetuloa.setBounds(10, -10, 300, 50);
 
