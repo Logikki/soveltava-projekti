@@ -132,8 +132,10 @@ public class Opettajanakyma implements ActionListener {
 
     }
 
+    
+    /** {@inheritDoc}
+     * Asetuspalkin nappien toiminnallisuus */
     @Override
-    /**Asetuspalkin nappien toiminnallisuus*/
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exit) {
             ikkuna.dispatchEvent(new WindowEvent(ikkuna, WindowEvent.WINDOW_CLOSING));

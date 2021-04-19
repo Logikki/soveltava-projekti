@@ -22,6 +22,9 @@ public class AsetaKayttajaTiedot implements ActionListener {
     JFrame ruutu;
     boolean OnkoUusiKayttaja;
     JLabel vaaraTunnus;
+    /** Konstruktori
+     * @param onkoUusikayttaja Vastaa onko käyttäjä uusi vai vanha.
+     */
     public AsetaKayttajaTiedot(boolean OnkoUusiKayttaja) {
         this.OnkoUusiKayttaja = OnkoUusiKayttaja;
         ruutu= new JFrame();
@@ -81,15 +84,16 @@ public class AsetaKayttajaTiedot implements ActionListener {
         ruutu.setSize(400,400);
         ruutu.setVisible(true);
     }
-    @Override
 
-/** Toiminnallisuus. 
+/** {@inheritDoc} 
+ * Toiminnallisuus. 
  * Kun käyttäjä painaa valmis nappia, niin rekisteröityessä tallennetaan tiedot Kayttajat.ser tiedostoon. 
  * Jos taas ollaan kirjautumassa, niin tarkistetaan onko salasana ja käyttäjätunnus oikeat.
- * @return Aloitusnäyttö jos rekisteröitymässä. Opiskelija tai oppilas näkymä jos kirjautumassa.
+ * Palautetaan Aloitusnäyttö jos rekisteröitymässä. Opiskelija tai oppilas näkymä jos kirjautumassa.
  * @param e on nappi mistä toiminto on tullut.
  * @since 1.0
 * */
+@Override
     public void actionPerformed(ActionEvent e){  
         if (e.getSource() == valmis) {
             String salasana = new String(this.salasanaKentta.getPassword());
@@ -151,12 +155,12 @@ public static void tallennaKayttaja(Henkilo henkilo) {
     }
 }
     
-@SuppressWarnings("unchecked")
 
 /** Tämä metodi lataa tiedostosta käyttäjät listan ja palauttaa sen.
 * @return Lista käyttäjistä
 * @since 1.0
 */
+@SuppressWarnings("unchecked")
 public static ArrayList<Henkilo> lataaKayttajat() {
     ArrayList<Henkilo> kayttajat = new ArrayList<>();
     try {
