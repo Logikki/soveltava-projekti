@@ -40,6 +40,7 @@ public class Opettajanakyma implements ActionListener {
         asetukset.add(exit);
         palkki.add(asetukset);
         kirjauduUlos.addActionListener(this);
+        exit.addActionListener(this);
         tervetuloa = new JLabel("Kirjautuneena käyttäjänä " + ope.getNimi());
 		tervetuloa.setBounds(10, -10, 300, 50);
 
@@ -100,7 +101,7 @@ public class Opettajanakyma implements ActionListener {
 
                         JFrame ik = new JFrame();
                         JLabel opp = new JLabel("Opiskelijan " + o.getNimi() + " kurssisuoritukset:");
-                        opp.setBounds(10, 0, 250, 50);
+                        opp.setBounds(10, 0, 300, 50);
 
                         DefaultListModel<String> suoritukset = new DefaultListModel<>();  
 		                HashMap<String,String> kurssit = o.getKurssiSuoritukset();	
@@ -111,7 +112,7 @@ public class Opettajanakyma implements ActionListener {
 		                    }
 
 		                JList<String> suor = new JList<>(suoritukset);
-		                suor.setBounds(100,100, 200,300);
+		                suor.setBounds(100,100, 250,300);
 
                         ik.add(suor); ik.add(opp);
                         ik.setSize(400, 600);
@@ -131,8 +132,12 @@ public class Opettajanakyma implements ActionListener {
 
     }
 
+    
+    /** {@inheritDoc}
+     * Asetuspalkin nappien toiminnallisuus 
+     * @param e on tuleva komento.
+     */
     @Override
-    /**Asetuspalkin nappien toiminnallisuus*/
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == exit) {
             ikkuna.dispatchEvent(new WindowEvent(ikkuna, WindowEvent.WINDOW_CLOSING));
@@ -144,7 +149,8 @@ public class Opettajanakyma implements ActionListener {
         }
     }
 
-    /** Tallentaa luodut henkilöoliot tiedostoon 'kayttajat.ser'
+    /** 
+     * Tallentaa luodut henkilöoliot tiedostoon 'kayttajat.ser'
      * @param kayttajat ArrayList tallennetuista käyttäjistä
      */
     public static void yliKirjoitaTiedosto(ArrayList<Henkilo> kayttajat) {

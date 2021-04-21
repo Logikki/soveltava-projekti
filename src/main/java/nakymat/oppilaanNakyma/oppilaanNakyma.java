@@ -27,6 +27,7 @@ public class oppilaanNakyma implements ActionListener {
 		asetukset.add(exit);
 		palkki.add(asetukset);
 		kirjauduUlos.addActionListener(this);
+		exit.addActionListener(this);
 		//Labelit
 		ka = new JLabel();
 		kurssejaSuoritettu = new JLabel();
@@ -53,9 +54,11 @@ public class oppilaanNakyma implements ActionListener {
 		ruutu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		ruutu.setSize(400,400); ruutu.setLayout(null); ruutu.setVisible(true); 
 }
-	@Override
-	/** Nappien toiminnallisuus  
+	/** {@inheritDoc} 
+	 * Nappien toiminnallisuus  
 	 * @since 1.0 */
+	
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == exit ) {
 			ruutu.dispatchEvent(new WindowEvent(ruutu, WindowEvent.WINDOW_CLOSING));
