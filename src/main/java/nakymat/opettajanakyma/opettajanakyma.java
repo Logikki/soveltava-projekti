@@ -76,9 +76,16 @@ public class Opettajanakyma implements ActionListener {
                             JFrame ik = new JFrame();
             
                             String knimi = JOptionPane.showInputDialog(ik,"Syötä kurssin tunnus");
-                            String asana = JOptionPane.showInputDialog(ik,"Syötä oppilaan " + o.getNimi() + " kurssista " + knimi + " saama arvosana");
+                            String asana;
+
+                            if (knimi != null) {
+                                asana = JOptionPane.showInputDialog(ik,"Syötä oppilaan " + o.getNimi() + " kurssista " + knimi + " saama arvosana");
+                            } else {
+                                asana = "";
+                            }
+
     
-                            if (knimi.length() > 0 && asana.length() > 0) {
+                            if (knimi != null && asana != null) {
                                 o.lisaaKurssiSuoritus(knimi, asana);
                                 henkilot.add(o);
                                 yliKirjoitaTiedosto(henkilot);
