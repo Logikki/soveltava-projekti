@@ -47,7 +47,7 @@ public class oppilaanNakyma implements ActionListener {
 		JList<String> list = new JList<>(suoritukset);
 		list.setBounds(100,50, 200,200); 
 		ka.setText("Keskiarvo: " + kayttaja.annaKeskiarvo());
-		kurssejaSuoritettu.setText("Kursseja suoritettu: " + kurssit.size());
+		kurssejaSuoritettu.setText("Kursseja suoritettu: " + kayttaja.kurssejaSuoritettu());
 		//Alustetaan ruutu 
 		ruutu.add(list); ruutu.add(header); ruutu.add(tervetuloa); ruutu.setJMenuBar(palkki); 
 		ruutu.add(ka); ruutu.add(kurssejaSuoritettu);
