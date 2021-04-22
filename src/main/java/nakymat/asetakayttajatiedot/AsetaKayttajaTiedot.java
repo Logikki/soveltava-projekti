@@ -121,6 +121,7 @@ public class AsetaKayttajaTiedot implements ActionListener {
                         if (kirjautuva.getClass() == Opettaja.class) {
                             Opettaja kayttajaOpettaja = (Opettaja)kayttaja;
                             new Opettajanakyma(kayttajaOpettaja);
+                            
                         }
                         else {
                             Opiskelija kayttajaOpiskelija = (Opiskelija)kayttaja;

@@ -101,7 +101,7 @@ public class Opettajanakyma implements ActionListener {
 
                         JFrame ik = new JFrame();
                         JLabel opp = new JLabel("Opiskelijan " + o.getNimi() + " kurssisuoritukset:");
-                        opp.setBounds(10, 0, 250, 50);
+                        opp.setBounds(10, 0, 300, 50);
 
                         DefaultListModel<String> suoritukset = new DefaultListModel<>();  
 		                HashMap<String,String> kurssit = o.getKurssiSuoritukset();	
@@ -112,7 +112,7 @@ public class Opettajanakyma implements ActionListener {
 		                    }
 
 		                JList<String> suor = new JList<>(suoritukset);
-		                suor.setBounds(100,100, 200,300);
+		                suor.setBounds(100,100, 250,300);
 
                         ik.add(suor); ik.add(opp);
                         ik.setSize(400, 600);
