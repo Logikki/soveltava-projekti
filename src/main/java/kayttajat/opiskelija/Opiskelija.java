@@ -50,6 +50,25 @@ public class Opiskelija extends Henkilo {
 	}
 	return 0.0;
 }
+	public int kurssejaSuoritettu() {
+		int testi = 0;
+		int suoritettu = 0;
+		if (kurssiSuoritukset.size() != 0) {
+			for (String asana : kurssiSuoritukset.keySet()) {
+				try {
+					testi = Integer.parseInt(kurssiSuoritukset.get(asana));
+				}
+				catch (NumberFormatException e) {
+					suoritettu -= 1;
+			}
+			suoritettu += 1;
+		}
+			return suoritettu;
+	
+	}
+	return 0;
+	}
+
 /** {@inheritDoc} 
  * 
  * @return siisti tulostus käyttäjästä
