@@ -14,7 +14,6 @@ class opiskelijaTest {
         assertTrue(matti.getKurssiSuoritukset().containsKey("TKO12345"));
     }
 
-
 @Test
     void annaKeskiarvoTest() {
         Opiskelija matti = new Opiskelija("matti", "salasana", "1234", "matti.opiskleija@gmail.com");
@@ -23,5 +22,14 @@ class opiskelijaTest {
         matti.lisaaKurssiSuoritus("TKO1234", "3");
         double ka = (5+5+3)/3;
         assertTrue(matti.annaKeskiarvo() == ka);
+    }
+    @Test
+    void kurssejaSuoritettuTest() {
+        Opiskelija matti = new Opiskelija("matti", "salasana", "1234", "matti.opiskleija@gmail.com");
+        matti.lisaaKurssiSuoritus("TKO12", "5");
+        matti.lisaaKurssiSuoritus("TKO1234", "H");
+        matti.lisaaKurssiSuoritus("TKO1234", "3");
+        int suoritettu = 2;
+        assertTrue(matti.kurssejaSuoritettu() == suoritettu);
     }
 }
